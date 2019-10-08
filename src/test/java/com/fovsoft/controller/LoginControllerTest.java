@@ -1,6 +1,7 @@
 package com.fovsoft.controller;
 
 import com.fovsoft.StartupApplication;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,12 +16,12 @@ import java.net.URL;
 @SpringBootTest(classes = StartupApplication.class,webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class LoginControllerTest {
     private int port;
-
     private URL base;
 
     @Autowired
     private TestRestTemplate restTemplate;
 
+    @Before
     public void setUp() throws Exception{
         String url = String.format("http://localhost:%d/", port);
         System.out.println(String.format("http://localhost:%d/", port));
@@ -33,5 +34,31 @@ public class LoginControllerTest {
 
         System.out.println(String.format("测试结果: %s", response.getBody()));
 
+    }
+
+
+
+    public int getPort() {
+        return port;
+    }
+
+    public void setPort(int port) {
+        this.port = port;
+    }
+
+    public URL getBase() {
+        return base;
+    }
+
+    public void setBase(URL base) {
+        this.base = base;
+    }
+
+    public TestRestTemplate getRestTemplate() {
+        return restTemplate;
+    }
+
+    public void setRestTemplate(TestRestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
     }
 }

@@ -1,32 +1,36 @@
 package com.fovsoft.controller;
 
-import com.fovsoft.common.JsonResult;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
-import java.util.HashMap;
-import java.util.Map;
 
-@RestController
+@Controller
 public class LoginController {
 
-
-    @RequestMapping("/login")
-    public String login() {
-        Map result = new HashMap();
-        result.put("code", "200");
-        result.put("msg", "OK");
-
-
-        return "ggg";
+    @RequestMapping(value = "/")
+    public ModelAndView index() {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("forward:/hello3");
+        return mv;
     }
 
-    @RequestMapping("/getMap")
-    public JsonResult<Map> getMap() {
-        Map result = new HashMap();
-        result.put("code", "200");
-        result.put("msg", "OK");
-        result.put("som", null);
-        return new JsonResult<>(result);
+
+    @RequestMapping(value = "/hello", method = RequestMethod.GET)
+    public String hello(Model model) {
+        model.addAttribute("name", "王圣基");
+        return "hello";
+    }
+    @RequestMapping(value = "/hello2", method = RequestMethod.GET)
+    public String hello2(Model model) {
+        model.addAttribute("name", "王圣基");
+        return "idx";
+    }
+
+    @RequestMapping(value = "/hello3", method = RequestMethod.GET)
+    public String hello3() {
+        return "index";
     }
 }
