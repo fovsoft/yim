@@ -1,4 +1,27 @@
-spring:
-  profiles:
-    active:dev
+#spring:
+#  profiles:
+#    active:dev
 
+resources: # 指定静态资源的路径
+  static-locations: classpath:/static/,classpath:/views/
+  cache-period: 0
+
+spring:
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql://localhost:3306/ym?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+
+thymeleaf:
+  cache: false
+
+devtools:
+  restart:
+  #热部署生效
+  enabled: true
+  #设置重启的目录
+  additional-paths: resources/**,static/**,templates/**
+  #该目录下的内容修改不重启
+  exclude: data/**

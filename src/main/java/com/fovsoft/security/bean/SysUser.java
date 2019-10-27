@@ -1,7 +1,9 @@
-package com.fovsoft.entity;
+package com.fovsoft.security.bean;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+import java.util.Set;
 
 public class SysUser implements Serializable {
 
@@ -22,6 +24,61 @@ public class SysUser implements Serializable {
     private String zjdlip;
     private String zt;
     private Date cjsj;
+
+    //存储用户角色
+    private Set<SysRole> sysRoleSet;
+
+    public Set<SysRole> getSysRoleSet() {
+        return sysRoleSet;
+    }
+
+    public void setSysRoleSet(Set<SysRole> sysRoleSet) {
+        this.sysRoleSet = sysRoleSet;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Date getCjsj() {
+        return cjsj;
+    }
+
+    public void setCjsj(Date cjsj) {
+        this.cjsj = cjsj;
+    }
+
+    private Date gxsj;
+    //获取用户菜单列表
+    private List sysMenuList;
+
+    public List getSysMenuList() {
+        return sysMenuList;
+    }
+
+    public void setSysMenuList(List sysMenuList) {
+        this.sysMenuList = sysMenuList;
+    }
 
 
     public int getUserId() {
@@ -56,36 +113,12 @@ public class SysUser implements Serializable {
         this.department = department;
     }
 
-    public String getSex() {
-        return sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
-
-    public Date getBirthday() {
-        return birthday;
-    }
-
-    public void setBirthday(Date birthday) {
-        this.birthday = birthday;
-    }
-
     public String getSfzmhm() {
         return sfzmhm;
     }
 
     public void setSfzmhm(String sfzmhm) {
         this.sfzmhm = sfzmhm;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public String getIpks() {
@@ -152,11 +185,11 @@ public class SysUser implements Serializable {
         this.zt = zt;
     }
 
-    public Date getCjsj() {
-        return cjsj;
+    public Date getGxsj() {
+        return gxsj;
     }
 
-    public void setCjsj(Date cjsj) {
-        this.cjsj = cjsj;
+    public void setGxsj(Date gxsj) {
+        this.gxsj = gxsj;
     }
 }

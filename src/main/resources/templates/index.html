@@ -1,43 +1,26 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-	<head lang="en">
+<html lang="en">
+	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
-		<title>移民系统</title>
-
+		<title>Dashboard - Ace Admin</title>
 		<meta name="description" content="overview &amp; stats" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-
-		<!-- bootstrap & fontawesome -->
 		<link rel="stylesheet" href="assets/css/bootstrap.min.css" />
 		<link rel="stylesheet" href="assets/font-awesome/4.5.0/css/font-awesome.min.css" />
-
-		<!-- page specific plugin styles -->
-
-		<!-- text fonts -->
 		<link rel="stylesheet" href="assets/css/fonts.googleapis.com.css" />
 
-		<!-- ace styles -->
 		<link rel="stylesheet" href="assets/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
 
-		<!--[if lte IE 9]>
 			<link rel="stylesheet" href="assets/css/ace-part2.min.css" class="ace-main-stylesheet" />
 		<![endif]-->
 		<link rel="stylesheet" href="assets/css/ace-skins.min.css" />
 		<link rel="stylesheet" href="assets/css/ace-rtl.min.css" />
 
-		<!--[if lte IE 9]>
 		  <link rel="stylesheet" href="assets/css/ace-ie.min.css" />
 		<![endif]-->
-
-		<!-- inline styles related to this page -->
-
-		<!-- ace settings handler -->
 		<script src="assets/js/ace-extra.min.js"></script>
 
-		<!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
-
-		<!--[if lte IE 8]>
 		<script src="assets/js/html5shiv.min.js"></script>
 		<script src="assets/js/respond.min.js"></script>
 		<![endif]-->
@@ -351,7 +334,7 @@
 								<li class="divider"></li>
 
 								<li>
-									<a href="#" th:href="@{/logout}">
+									<a href="#">
 										<i class="ace-icon fa fa-power-off"></i>
 										Logout
 									</a>
@@ -374,24 +357,23 @@
 				</script>
 
 				<div class="sidebar-shortcuts" id="sidebar-shortcuts">
-						<div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
-							<button class="btn btn-success">
-								<i class="ace-icon fa fa-signal"></i>
-							</button>
+					<div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
+						<button class="btn btn-success">
+							<i class="ace-icon fa fa-signal"></i>
+						</button>
 
-							<button class="btn btn-info">
-								<i class="ace-icon fa fa-pencil"></i>
-							</button>
+						<button class="btn btn-info">
+							<i class="ace-icon fa fa-pencil"></i>
+						</button>
 
-							<button class="btn btn-warning">
-								<i class="ace-icon fa fa-users"></i>
-							</button>
+						<button class="btn btn-warning">
+							<i class="ace-icon fa fa-users"></i>
+						</button>
 
-							<button class="btn btn-danger">
-								<i class="ace-icon fa fa-cogs"></i>
-							</button>
-						</div>
-
+						<button class="btn btn-danger">
+							<i class="ace-icon fa fa-cogs"></i>
+						</button>
+					</div>
 
 					<div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
 						<span class="btn btn-success"></span>
@@ -882,6 +864,69 @@
 							</li>
 						</ul>
 					</li>
+
+					<li class="">
+						<a href="#" class="dropdown-toggle">
+							<i class="menu-icon fa fa-file-o"></i>
+
+							<span class="menu-text">
+								基础信息管理
+
+								<span class="badge badge-primary">5</span>
+							</span>
+
+							<b class="arrow fa fa-angle-down"></b>
+						</a>
+
+						<b class="arrow"></b>
+
+						<ul class="submenu">
+							<li class="">
+								<a href="/family">
+									<i class="menu-icon fa fa-caret-right"></i>
+									贫困户家庭基本情况
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+
+							<li class="">
+								<a href="error-404.html">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Error 404
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+
+							<li class="">
+								<a href="error-500.html">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Error 500
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+
+							<li class="">
+								<a href="grid.html">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Grid
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+
+							<li class="">
+								<a href="blank.html">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Blank Page
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+						</ul>
+					</li>
 				</ul><!-- /.nav-list -->
 
 				<div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
@@ -978,18 +1023,15 @@
 							</div><!-- /.ace-settings-box -->
 						</div><!-- /.ace-settings-container -->
 
-						<div sec:authorize="hasRole('topLevel')">
-							<div class="page-header">
-								<h1>
-									Dashboard 222
-									<small>
-										<i class="ace-icon fa fa-angle-double-right"></i>
-										overview &amp; stats
-									</small>
-								</h1>
-							</div><!-- /.page-header -->
-						</div>
-
+						<div class="page-header">
+							<h1>
+								Dashboard
+								<small>
+									<i class="ace-icon fa fa-angle-double-right"></i>
+									overview &amp; stats
+								</small>
+							</h1>
+						</div><!-- /.page-header -->
 
 						<div class="row">
 							<div class="col-xs-12">
@@ -1018,11 +1060,10 @@
 												<i class="ace-icon fa fa-comments"></i>
 											</div>
 
-												<div class="infobox-data">
-													<span class="infobox-data-number">32</span>
-													<div class="infobox-content">comments + 2 reviews</div>
-												</div>
-
+											<div class="infobox-data">
+												<span class="infobox-data-number">32</span>
+												<div class="infobox-content">comments + 2 reviews</div>
+											</div>
 
 											<div class="stat stat-success">8%</div>
 										</div>
