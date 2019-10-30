@@ -26,11 +26,12 @@
     <div class="layui-tab-content" style="height: 100%;">
         <div class="layui-tab-item layui-show">
             <form class="layui-form">
+                <input type="hidden" name="pk" id="pk">
                 <div class="layui-form-item">
                     <div class="layui-inline">
-                        <div class="layui-form-mid">家庭住址：</div>
+                        <label class="layui-form-label">家庭住址：</label>
                         <div class="layui-input-inline">
-                            <select name="modules1" lay-verify="required" lay-search="">
+                            <select name="modules1" lay-verify="required" lay-search="" style="width: 20px">
                                 <option value="">直接选择或搜索选择</option>
                                 <option value="010">南宁</option>
                                 <option value="021">柳州</option>
@@ -41,7 +42,7 @@
                         <div class="layui-form-mid layui-word-aux">市</div>
 
                         <div class="layui-input-inline">
-                            <select name="modules2" lay-verify="required" lay-search="">
+                            <select name="modules2" lay-verify="required" lay-search="" style="width: 20px">
                                 <option value="">直接选择或搜索选择</option>
                                 <option value="010">武鸣县</option>
                                 <option value="021">邕宁县</option>
@@ -52,7 +53,7 @@
                         <div class="layui-form-mid layui-word-aux">县（市、区）</div>
 
                         <div class="layui-input-inline">
-                            <select name="modules3" lay-verify="required" lay-search="">
+                            <select name="modules3" lay-verify="required" lay-search="" style="width: 20px">
                                 <option value="">直接选择或搜索选择</option>
                                 <option value="010">大化</option>
                                 <option value="021">三江</option>
@@ -61,76 +62,156 @@
                             </select>
                         </div>
                         <div class="layui-form-mid layui-word-aux">镇（乡、街道）</div>
+
+                        <div class="layui-input-inline" style="width:80px;">
+                            <div class="layui-input-inline" style="width:80px;">
+                                <input type="tel" name="phone" lay-verify="required" autocomplete="off"
+                                       class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-mid layui-word-aux">村</div>
+
+                        <div class="layui-input-inline" style="width:100px;">
+                            <div class="layui-input-inline" style="width:100px;">
+                                <input type="tel" name="phone" lay-verify="required" autocomplete="off"
+                                       class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-mid layui-word-aux">自然村（屯）</div>
                     </div>
                 </div>
 
+                <hr class="layui-bg-gray"/>
+
                 <div class="layui-form-item">
                     <div class="layui-inline">
-                        <div class="layui-form-mid">联系电话：</div>
+                        <label class="layui-form-label">联系电话：</label>
                         <div class="layui-input-inline">
-                            <input type="tel" name="phone" lay-verify="required|phone" autocomplete="off" class="layui-input">
+                            <input type="tel" name="phone" lay-verify="required|phone" autocomplete="off"
+                                   class="layui-input">
                         </div>
                     </div>
                     <div class="layui-inline">
-                        <div class="layui-form-mid layui-word-aux">开户银行（选填）：</div>
+                        <label class="layui-form-label">开户银行：</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="khyz"  autocomplete="off" class="layui-input">
+                            <input type="text" name="khyz" autocomplete="off" class="layui-input" placeholder="（选填）">
                         </div>
                     </div>
                     <div class="layui-inline">
-                        <div class="layui-form-mid layui-word-aux">银行卡号（选填）：</div>
-                        <div class="layui-input-inline">
-                            <input type="text" name="yhkh"  autocomplete="off" class="layui-input">
+                        <label class="layui-form-label">银行卡号：</label>
+                        <div class="layui-input-inline" style="width:320px;">
+                            <input type="text" name="yhkh" autocomplete="off" class="layui-input" placeholder="（选填）">
                         </div>
                     </div>
                 </div>
 
+                <hr class="layui-bg-gray"/>
+
                 <div class="layui-form-item">
                     <div class="layui-inline">
-                        <div class="layui-form-mid">贫困户属性：</div>
+                        <div class="layui-form-mid" style="margin-left: 16px">贫困户属性：</div>
                         <div class="layui-input-inline">
-                            <input type="text" name="pkhsx" lay-verify="required" autocomplete="off" class="layui-input">
+                            <!--<input type="text" name="pkhsx" lay-verify="required" autocomplete="off"-->
+                                   <!--class="layui-input">-->
+                            <select name="modules1" lay-verify="required" style="width: 20px">
+                                <option value="010">一般贫困户</option>
+                                <option value="021">低保贫困户</option>
+                                <option value="0571">特困供养贫困户</option>
+                            </select>
                         </div>
                     </div>
+
                     <div class="layui-inline">
                         <div class="layui-form-mid">计划脱贫年度：</div>
                         <div class="layui-input-inline">
-                            <input type="text" name="pkhsx" lay-verify="required" autocomplete="off" class="layui-input">
+                            <input id="jhtpnd" type="text" name="jhtpnd" lay-verify="required" autocomplete="off"
+                                   class="layui-input" placeholder="yyyy">
                         </div>
                     </div>
                     <div class="layui-inline">
                         <div class="layui-form-mid">返贫年度：</div>
                         <div class="layui-input-inline">
-                            <input type="text" name="pkhsx" lay-verify="required" autocomplete="off" class="layui-input">
+                            <input id="fpnd" type="text" name="fpnd" lay-verify="required" autocomplete="off"
+                                   class="layui-input" placeholder="yyyy">
                         </div>
                     </div>
                     <div class="layui-inline">
                         <div class="layui-form-mid">返贫原因：</div>
                         <div class="layui-input-inline">
-                            <input type="text" name="pkhsx" lay-verify="required" autocomplete="off" class="layui-input">
+                            <input type="text" name="pkhsx" lay-verify="required" autocomplete="off"
+                                   class="layui-input">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <div class="layui-form-mid" style="margin-left: 16px">是否军烈属：</div>
+                        <div class="layui-input-inline">
+                            <select name="modules1" lay-verify="required"  style="width: 20px">
+                                <option value="010">否</option>
+                                <option value="021">是</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <hr class="layui-bg-gray"/>
+
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <div class="layui-form-mid">是否易地扶贫搬迁户：</div>
+                        <div class="layui-input-inline">
+                            <input type="text" name="pkhsx" lay-verify="required" autocomplete="off"
+                                   class="layui-input">
                         </div>
                     </div>
                     <div class="layui-inline">
-                        <div class="layui-form-mid">是否军烈属：</div>
+                        <div class="layui-form-mid">搬迁方式：</div>
                         <div class="layui-input-inline">
-                            <input type="text" name="pkhsx" lay-verify="required" autocomplete="off" class="layui-input">
+                            <input type="text" name="pkhsx" lay-verify="required" autocomplete="off"
+                                   class="layui-input">
                         </div>
                     </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">搬迁地址：</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="identity" lay-verify="required" placeholder="" autocomplete="off"
+                               class="layui-input">
+                    </div>
+                </div>
 
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                    </div>
                 </div>
             </form>
         </div>
-        <div class="layui-tab-item">2</div>
+        <div class="layui-tab-item">2sdgsdg</div>
         <div class="layui-tab-item">3</div>
-        <div class="layui-tab-item">4</div>
+        <div class="layui-tab-item">4sdgsd</div>
         <div class="layui-tab-item">5</div>
         <div class="layui-tab-item">6</div>
     </div>
 </div>
 </body>
 <script type="text/javascript">
-    layui.use(['form','element'], function () {
+    layui.use(['form', 'element', 'laydate'], function () {
         var element = layui.element;
+        var laydate = layui.laydate;
+
+        laydate.render({
+            elem: '#jhtpnd',
+            type: 'year'
+        });
+
+        laydate.render({
+            elem: '#fpnd',
+            type: 'year'
+        });
+
 
         element.on('tab(addBaseInfo)', function (data) {
             console.log(data);
