@@ -15,7 +15,7 @@ import java.net.URL;
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = StartupApplication.class,webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class LoginControllerTest {
-    private int port;
+    private int port = 8080;
     private URL base;
 
     @Autowired
@@ -30,7 +30,7 @@ public class LoginControllerTest {
 
     @Test
     public void testLogin() {
-        ResponseEntity<String> response = this.restTemplate.getForEntity(this.base.toString() + "/test", String.class, "");
+        ResponseEntity<String> response = this.restTemplate.getForEntity(this.base.toString() + "/getFamliyList", String.class, "");
 
         System.out.println(String.format("测试结果: %s", response.getBody()));
 

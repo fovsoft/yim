@@ -9,63 +9,55 @@
 
     <!-- layui css -->
     <link rel="stylesheet" href="/assets/layui/dist/css/layui.css" media="all">
-
-
     <script src="/assets/js/jquery-1.11.3.min.js"></script>
     <script src="/assets/layui/dist/layui.js" charset="utf-8"></script>
+    <script src="/assets/ym/family_add.js"></script>
 </head>
 <body>
 <div class="layui-tab layui-tab-card" lay-filter="addBaseInfo">
     <ul class="layui-tab-title">
-        <li class="layui-this">基本信息</li>
-        <li>家庭成员</li>
-        <li>致贫原因及家庭人口情况</li>
-        <li>生产生活条件</li>
-        <li>变更情况说明</li>
+        <li lay-id="1" class="layui-this">基本信息</li>
+        <li lay-id="2">家庭成员</li>
+        <li lay-id="3">致贫原因及家庭人口情况</li>
+        <li lay-id="4">生产生活条件</li>
+        <li lay-id="5">变更情况说明</li>
     </ul>
     <div class="layui-tab-content" style="height: 100%;">
         <div class="layui-tab-item layui-show">
             <form class="layui-form">
-                <input type="hidden" name="pk" id="pk">
+                <input type="hidden" name="baseid" id="baseid">
                 <div class="layui-form-item">
                     <div class="layui-inline">
                         <label class="layui-form-label">家庭住址：</label>
                         <div class="layui-input-inline">
-                            <select name="modules1" lay-verify="required" lay-search="" style="width: 20px">
-                                <option value="">直接选择或搜索选择</option>
-                                <option value="010">南宁</option>
-                                <option value="021">柳州</option>
-                                <option value="0571">桂林</option>
-                                <option value="0121" selected>钦州</option>
+                            <select id="city" name="city" lay-verify="required" lay-filter="city" lay-search="" style="width: 20px">
+                                <!--<option value="">直接选择或搜索选择</option>-->
+                                <!--<option value="1">南宁</option>-->
+                                <!--<option value="20000">柳州</option>-->
+                                <!--<option value="30000">桂林</option>-->
+                                <!--<option value="40000" selected>钦州</option>-->
                             </select>
                         </div>
                         <div class="layui-form-mid layui-word-aux">市</div>
 
                         <div class="layui-input-inline">
-                            <select name="modules2" lay-verify="required" lay-search="" style="width: 20px">
-                                <option value="">直接选择或搜索选择</option>
-                                <option value="010">武鸣县</option>
-                                <option value="021">邕宁县</option>
-                                <option value="0571">青秀区</option>
-                                <option value="0121">江南区</option>
+                            <select id="county" name="county" lay-verify="required" lay-filter="county" lay-search="" style="width: 20px">
                             </select>
                         </div>
                         <div class="layui-form-mid layui-word-aux">县（市、区）</div>
 
                         <div class="layui-input-inline">
-                            <select name="modules3" lay-verify="required" lay-search="" style="width: 20px">
-                                <option value="">直接选择或搜索选择</option>
-                                <option value="010">大化</option>
-                                <option value="021">三江</option>
-                                <option value="0571">蒲庙</option>
-                                <option value="0121">坛洛</option>
+                            <select id="town" name="town" lay-verify="required" lay-filter="town" lay-search="" style="width: 20px">
                             </select>
                         </div>
                         <div class="layui-form-mid layui-word-aux">镇（乡、街道）</div>
-
-                        <div class="layui-input-inline" style="width:80px;">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <div class="layui-input-inline" style="width:80px;margin-left: 110px">
                             <div class="layui-input-inline" style="width:80px;">
-                                <input type="tel" name="phone" lay-verify="required" autocomplete="off"
+                                <input type="avillage" name="avillage" lay-verify="required" autocomplete="off" value="测试自然村村"
                                        class="layui-input">
                             </div>
                         </div>
@@ -73,7 +65,7 @@
 
                         <div class="layui-input-inline" style="width:100px;">
                             <div class="layui-input-inline" style="width:100px;">
-                                <input type="tel" name="phone" lay-verify="required" autocomplete="off"
+                                <input id="nvillage" name="nvillage" lay-verify="required" autocomplete="off" value="测试屯"
                                        class="layui-input">
                             </div>
                         </div>
@@ -87,20 +79,21 @@
                     <div class="layui-inline">
                         <label class="layui-form-label">联系电话：</label>
                         <div class="layui-input-inline">
-                            <input type="tel" name="phone" lay-verify="required|phone" autocomplete="off"
+                            <input type="tel" name="tel" id="tel" lay-verify="required|phone" autocomplete="off" value="13222221111"
                                    class="layui-input">
                         </div>
                     </div>
                     <div class="layui-inline">
                         <label class="layui-form-label">开户银行：</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="khyz" autocomplete="off" class="layui-input" placeholder="（选填）">
+                            <input type="text" name="dpst_bk" id="dpst_bk" autocomplete="off" class="layui-input"
+                                   placeholder="（选填）">
                         </div>
                     </div>
                     <div class="layui-inline">
                         <label class="layui-form-label">银行卡号：</label>
-                        <div class="layui-input-inline" style="width:320px;">
-                            <input type="text" name="yhkh" autocomplete="off" class="layui-input" placeholder="（选填）">
+                        <div class="layui-input-inline" style="width:260px;">
+                            <input type="text" name="bk_num" id="bk_num" autocomplete="off" class="layui-input" placeholder="（选填）">
                         </div>
                     </div>
                 </div>
@@ -112,8 +105,8 @@
                         <div class="layui-form-mid" style="margin-left: 16px">贫困户属性：</div>
                         <div class="layui-input-inline">
                             <!--<input type="text" name="pkhsx" lay-verify="required" autocomplete="off"-->
-                                   <!--class="layui-input">-->
-                            <select name="modules1" lay-verify="required" style="width: 20px">
+                            <!--class="layui-input">-->
+                            <select name="family_attr" id="family_attr" lay-verify="required" style="width: 20px">
                                 <option value="010">一般贫困户</option>
                                 <option value="021">低保贫困户</option>
                                 <option value="0571">特困供养贫困户</option>
@@ -124,33 +117,38 @@
                     <div class="layui-inline">
                         <div class="layui-form-mid">计划脱贫年度：</div>
                         <div class="layui-input-inline">
-                            <input id="jhtpnd" type="text" name="jhtpnd" lay-verify="required" autocomplete="off"
+                            <input id="poverty_relief_tm" type="text" name="poverty_relief_tm" lay-verify="required" autocomplete="off" value="2020"
                                    class="layui-input" placeholder="yyyy">
                         </div>
                     </div>
                     <div class="layui-inline">
                         <div class="layui-form-mid">返贫年度：</div>
                         <div class="layui-input-inline">
-                            <input id="fpnd" type="text" name="fpnd" lay-verify="required" autocomplete="off"
+                            <input id="poverty_rtn_tm" type="text" name="poverty_rtn_tm" lay-verify="required" autocomplete="off" value="2018"
                                    class="layui-input" placeholder="yyyy">
                         </div>
                     </div>
-                    <div class="layui-inline">
-                        <div class="layui-form-mid">返贫原因：</div>
-                        <div class="layui-input-inline">
-                            <input type="text" name="pkhsx" lay-verify="required" autocomplete="off"
-                                   class="layui-input">
-                        </div>
-                    </div>
+
                 </div>
 
                 <div class="layui-form-item">
+
                     <div class="layui-inline">
-                        <div class="layui-form-mid" style="margin-left: 16px">是否军烈属：</div>
+                        <label class="layui-form-label">返贫原因：</label>
+                        <div class="layui-inline">
+                            <div class="layui-input-inline">
+                                <input type="text" id="poverty_rtn_rsn" name="poverty_rtn_rsn" lay-verify="required" autocomplete="off" value="因学"
+                                       class="layui-input">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label" style="width: auto">是否军烈属：</label>
+                        <!--<div class="layui-form-mid">是否军烈属：</div>-->
                         <div class="layui-input-inline">
-                            <select name="modules1" lay-verify="required"  style="width: 20px">
-                                <option value="010">否</option>
-                                <option value="021">是</option>
+                            <select name="is_martyrsfamily" id="is_martyrsfamily" lay-verify="required">
+                                <option value="0">否</option>
+                                <option value="1">是</option>
                             </select>
                         </div>
                     </div>
@@ -159,31 +157,33 @@
 
                 <div class="layui-form-item">
                     <div class="layui-inline">
-                        <div class="layui-form-mid">是否易地扶贫搬迁户：</div>
+                        <label class="layui-form-label" style="width: auto">是否易地扶贫搬迁户：</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="pkhsx" lay-verify="required" autocomplete="off"
-                                   class="layui-input">
+                            <select name="is_relocated" id="is_relocated" lay-verify="required" autocomplete="off">
+                                <option value="1">是</option>
+                                <option value="0">否</option>
+                            </select>
                         </div>
                     </div>
                     <div class="layui-inline">
-                        <div class="layui-form-mid">搬迁方式：</div>
+                        <label class="layui-form-label" style="width: auto">搬迁方式：</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="pkhsx" lay-verify="required" autocomplete="off"
-                                   class="layui-input">
+                            <input type="text" id="relocated_way" name="relocated_way" lay-verify="required" autocomplete="off"
+                                   class="layui-input" value="测试搬迁方式"/>
                         </div>
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">搬迁地址：</label>
                     <div class="layui-input-block">
-                        <input type="text" name="identity" lay-verify="required" placeholder="" autocomplete="off"
-                               class="layui-input">
+                        <input type="text" id="relocated_addr" name="relocated_addr" lay-verify="required" placeholder="" autocomplete="off"
+                               class="layui-input" value="测试搬迁地址"/>
                     </div>
                 </div>
 
                 <div class="layui-form-item">
                     <div class="layui-input-block">
-                        <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+                        <button class="layui-btn" lay-submit lay-filter="base1">立即提交</button>
                         <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                     </div>
                 </div>
@@ -198,24 +198,6 @@
 </div>
 </body>
 <script type="text/javascript">
-    layui.use(['form', 'element', 'laydate'], function () {
-        var element = layui.element;
-        var laydate = layui.laydate;
 
-        laydate.render({
-            elem: '#jhtpnd',
-            type: 'year'
-        });
-
-        laydate.render({
-            elem: '#fpnd',
-            type: 'year'
-        });
-
-
-        element.on('tab(addBaseInfo)', function (data) {
-            console.log(data);
-        });
-    });
 </script>
 </html>
