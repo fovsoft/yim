@@ -23,7 +23,7 @@ public class FamilyController {
     }
 
     @RequestMapping(value = "/familyAdd")
-    public String add() {
+    public String familyAdd() {
         return "family_add";
     }
 }

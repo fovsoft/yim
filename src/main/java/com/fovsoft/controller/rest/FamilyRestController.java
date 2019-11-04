@@ -1,23 +1,32 @@
 package com.fovsoft.controller.rest;
 
+import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.fovsoft.common.JsonResult;
+import com.fovsoft.entity.YmFamilyBase;
 import com.fovsoft.service.FamilySerivce;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.jws.WebMethod;
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 @RestController
+@RequestMapping("/family")
 public class FamilyRestController {
-
+    private final Log logger = LogFactory.getLog(this.getClass());
     @Autowired
     FamilySerivce familySerivce;
 
-    @RequestMapping(value = "/getFamliyList")
+    @RequestMapping(value = "/getList")
     public Object index() {
 
         List list = new ArrayList();
@@ -40,4 +49,15 @@ public class FamilyRestController {
         return result;
     }
 
+    @RequestMapping(value = "/add", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+//    public Object add(@RequestBody YmFamilyBase ymFamilyBase) {
+    public Object add(@RequestBody YmFamilyBase ymFamilyBase) {
+        logger.info(ymFamilyBase.getCity());
+        Map result = new HashMap();
+        result.put("data", 1);
+        result.put("msg", "");
+        result.put("count", 1);
+        result.put("code", 0);
+        return 1;
+    }
 }

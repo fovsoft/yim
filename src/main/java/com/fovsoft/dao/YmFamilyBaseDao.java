@@ -5,14 +5,14 @@ import com.fovsoft.entity.YmFamilyBase;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 
-/**
- * @author: by tpc
- * @date: 2019/10/18 9:20
- * @description:
- **/
 @Mapper
 public interface YmFamilyBaseDao {
 
-    @Insert(" insert into ym_family(szs,szx,szc,szz,szjd,lxdh,khyh,yhkh,pkhsx,sfdnytp,jhtpnd,fpnd,fpyy,sfjls,sfydfpbqh,bqfs,bqdz) values (#{szs},#{szx},#{szc},#{szz},#{szjd},#{lxdh},#{khyh},#{yhkh},#{pkhsx},#{sfdnytp},#{jhtpnd},#{fpnd},#{fpyy},#{sfjls},#{sfydfpbqh},#{bqfs},#{bqdz})")
+//    @Insert("   INSERT INTO ym_family_base(city, county, town, avillage, nvillage, tel, dpst_bk, bk_num, family_attr, poverty_rtn_tm, poverty_rtn_rsn, is_martyrsfamily, is_relocated, relocated_way, relocated_addr, add_time, update_time, uid)\n" +
+//            "    VALUES (\n" +
+//            "\n" +
+//            "    )")
     int addYmFamilyBase(YmFamilyBase ymFamilyBase);
 }
+
+

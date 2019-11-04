@@ -1,15 +1,24 @@
 package com.fovsoft.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  * table name:  ym_family_base
  * author name: ryo
  * create time: 2019-11-02 21:47:54
  */
+@Entity
+@Table(name = "ym_family_base")
 public class YmFamilyBase implements Serializable {
-
+    @JsonProperty(value = "baseid")
+    @Id
     private int id;
     private int city;
     private int county;
@@ -17,17 +26,41 @@ public class YmFamilyBase implements Serializable {
     private int avillage;
     private String nvillage;
     private String tel;
+    @Column(name = "desp_bk")
+    @JsonProperty(value = "desp_bk")
     private int dpstBk;
+    @Column(name = "bk_num")
+    @JsonProperty(value = "bk_num")
     private String bkNum;
+    @Column(name = "family_attr")
+    @JsonProperty(value = "family_attr")
     private int familyAttr;
+    @Column(name = "poverty_relief_tm")
+    @JsonProperty(value = "poverty_relief_tm")
     private int povertyReliefTm;
+    @Column(name = "poverty_rtn_tm")
+    @JsonProperty(value = "poverty_rtn_tm")
     private int povertyRtnTm;
+    @Column(name = "poverty_rtn_rsn")
+    @JsonProperty(value = "poverty_rtn_rsn")
     private String povertyRtnRsn;
+    @Column(name = "is_martyrsfamily")
+    @JsonProperty(value = "is_martyrsfamily")
     private int isMartyrsfamily;
+    @Column(name = "is_relocated")
+    @JsonProperty(value = "is_relocated")
     private int isRelocated;
+    @Column(name = "relocated_way")
+    @JsonProperty(value = "relocated_way")
     private String relocatedWay;
+    @Column(name = "relocated_addr")
+    @JsonProperty(value = "relocated_addr")
     private String relocatedAddr;
+    @Column(name = "add_time")
+    @JsonProperty(value = "add_time")
     private Date addTime;
+    @Column(name = "update_time")
+    @JsonProperty(value = "update_time")
     private Date updateTime;
     private int uid;
 
