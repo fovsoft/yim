@@ -50,16 +50,8 @@ public class FamilyRestController {
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-//    public Object add(@RequestBody YmFamilyBase ymFamilyBase) {
-    public Object add(@RequestBody YmFamilyBase ymFamilyBase) {
-
+    public JsonResult add(@RequestBody YmFamilyBase ymFamilyBase) {
         int id = familySerivce.addOrUpdateFamilyBase(ymFamilyBase);
-
-        Map result = new HashMap();
-        result.put("data", 1);
-        result.put("msg", "");
-        result.put("count", 1);
-        result.put("code", 0);
-        return 1;
+        return new JsonResult(Integer.valueOf(id));
     }
 }

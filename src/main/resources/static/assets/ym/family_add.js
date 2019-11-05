@@ -58,10 +58,12 @@ let family_add = (function () {
                 },
                 success: function (res) {
                     if (res.code = '0') {
-                        parent.closeIframe(res.msg);
+                        $("#baseid").val(res.data);
+                        layer.msg("✔ 保存成功!");
                     }
-                    else
-                        alert(res.msg);
+                    else {
+                        layer.msg("× 保存失败");
+                    }
                 },
                 error: function (data) {
 

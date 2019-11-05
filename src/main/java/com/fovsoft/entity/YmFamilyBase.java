@@ -1,8 +1,10 @@
 package com.fovsoft.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -58,7 +60,7 @@ public class YmFamilyBase implements Serializable {
     private String relocatedAddr;
     @Column(name = "add_time")
     @JsonProperty(value = "add_time")
-    private Date addTime;
+    private Timestamp addTime;
     @Column(name = "update_time")
     @JsonProperty(value = "update_time")
     private Date updateTime;
@@ -200,11 +202,12 @@ public class YmFamilyBase implements Serializable {
         return relocatedAddr;
     }
 
-    public void setAddTime(Date addTime) {
+    public void setAddTime(Timestamp addTime) {
         this.addTime = addTime;
     }
 
-    public Date getAddTime() {
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    public Timestamp getAddTime() {
         return addTime;
     }
 
