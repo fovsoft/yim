@@ -23,11 +23,11 @@ public class YmFamilyBase implements Serializable {
     private int city;
     private int county;
     private int town;
-    private int avillage;
+    private String avillage;
     private String nvillage;
     private String tel;
-    @Column(name = "desp_bk")
-    @JsonProperty(value = "desp_bk")
+    @Column(name = "dpst_bk")
+    @JsonProperty(value = "dpst_bk")
     private int dpstBk;
     @Column(name = "bk_num")
     @JsonProperty(value = "bk_num")
@@ -96,11 +96,11 @@ public class YmFamilyBase implements Serializable {
         return town;
     }
 
-    public void setAvillage(int avillage) {
+    public void setAvillage(String avillage) {
         this.avillage = avillage;
     }
 
-    public int getAvillage() {
+    public String getAvillage() {
         return avillage;
     }
 

@@ -52,7 +52,9 @@ public class FamilyRestController {
     @RequestMapping(value = "/add", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 //    public Object add(@RequestBody YmFamilyBase ymFamilyBase) {
     public Object add(@RequestBody YmFamilyBase ymFamilyBase) {
-        logger.info(ymFamilyBase.getCity());
+
+        int id = familySerivce.addOrUpdateFamilyBase(ymFamilyBase);
+
         Map result = new HashMap();
         result.put("data", 1);
         result.put("msg", "");

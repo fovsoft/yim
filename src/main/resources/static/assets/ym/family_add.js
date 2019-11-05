@@ -50,7 +50,7 @@ let family_add = (function () {
             $.ajax({
                 url: '/family/add',
                 method: 'post',
-                data: data.field,
+                data: JSON.stringify(data.field),
                 contentType: "application/json",
                 dataType: 'JSON',
                 beforeSend: function(xhr) {
