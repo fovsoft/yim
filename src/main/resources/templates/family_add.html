@@ -14,6 +14,9 @@
     <script src="/assets/layui/dist/layui.js" charset="utf-8"></script>
     <script src="/assets/ym/family_add.js"></script>
 </head>
+<script type="text/css">
+    .layui-form-label {width: 120px}
+</script>
 <body>
 <div class="layui-tab layui-tab-card" lay-filter="addBaseInfo">
     <ul class="layui-tab-title">
@@ -23,7 +26,9 @@
         <li lay-id="4">生产生活条件</li>
         <li lay-id="5">变更情况说明</li>
     </ul>
+
     <div class="layui-tab-content" style="height: 100%;">
+        <!-- 基本信息 -->
         <div class="layui-tab-item layui-show">
             <form class="layui-form">
                 <input type="hidden" name="baseid" id="baseid">
@@ -191,7 +196,98 @@
             </form>
         </div>
         <div class="layui-tab-item">2sdgsdg</div>
-        <div class="layui-tab-item">3</div>
+        <!-- 致贫原因及家庭人口情况 -->
+        <div class="layui-tab-item">
+                <form class="layui-form">
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label" style="width: 120px">致贫原因1<span style="color: red">（必填）</span></label>
+                            <div class="layui-input-inline">
+                                <select  id="poverty_causes1" name="poverty_causes1" class="layui-unselect layui-form-select"  style="width: 100%;" lay-verify="required" lay-filter="poverty_causes1">
+                                    <option value="">请选择</option>
+                                    <option value="1">因病</option>
+                                    <option value="2">因残</option>
+                                    <option value="3">因学</option>
+                                    <option value="4">因灾</option>
+                                    <option value="5">因婚</option>
+                                    <option value="6">缺土地</option>
+                                    <option value="7">缺水</option>
+                                    <option value="8">缺技术</option>
+                                    <option value="9">缺劳力</option>
+                                    <option value="10">缺资金</option>
+                                    <option value="11">交通条件落后</option>
+                                    <option value="12">自身发展动力不足</option>
+                                    <option value="13">因丧</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label" style="width: 120px">致贫原因2（选填）</label>
+                            <div class="layui-input-inline">
+                                <select  id="poverty_causes2" name="poverty_causes2" class="layui-unselect layui-form-select"  style="width: 100%;" lay-filter="poverty_causes2">
+                                    <option value="">请选择</option>
+                                    <option value="1">因病</option>
+                                    <option value="2">因残</option>
+                                    <option value="3">因学</option>
+                                    <option value="4">因灾</option>
+                                    <option value="5">因婚</option>
+                                    <option value="6">缺土地</option>
+                                    <option value="7">缺水</option>
+                                    <option value="8">缺技术</option>
+                                    <option value="9">缺劳力</option>
+                                    <option value="10">缺资金</option>
+                                    <option value="11">交通条件落后</option>
+                                    <option value="12">自身发展动力不足</option>
+                                    <option value="13">因丧</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label" style="width: 120px">致贫原因3（选填）</label>
+                            <div class="layui-input-inline">
+                                <select  id="poverty_causes3" name="poverty_causes3" class="layui-unselect layui-form-select"  style="width: 100%;" lay-filter="poverty_causes3">
+                                    <option value="">请选择</option>
+                                    <option value="1">因病</option>
+                                    <option value="2">因残</option>
+                                    <option value="3">因学</option>
+                                    <option value="4">因灾</option>
+                                    <option value="5">因婚</option>
+                                    <option value="6">缺土地</option>
+                                    <option value="7">缺水</option>
+                                    <option value="8">缺技术</option>
+                                    <option value="9">缺劳力</option>
+                                    <option value="10">缺资金</option>
+                                    <option value="11">交通条件落后</option>
+                                    <option value="12">自身发展动力不足</option>
+                                    <option value="13">因丧</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label" style="width: 120px">年初家庭人口数</label>
+                            <div id="" class="layui-input-inline">
+                                <input class="layui-input" />
+                            </div>
+                        </div>
+
+                        <div class="layui-inline">
+                            <label class="layui-form-label" style="width: 120px">年底家庭人口数</label>
+                            <div class="layui-input-inline">
+                                <input class="layui-input" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button type="button" class="layui-btn" lay-submit lay-filter="base3">提交</button>
+                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                        </div>
+                    </div>
+                </form>
+
+        </div>
         <div class="layui-tab-item">4sdgsd</div>
         <div class="layui-tab-item">5</div>
         <div class="layui-tab-item">6</div>
