@@ -3,6 +3,8 @@ package com.fovsoft.controller.rest;
 import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.fovsoft.common.JsonResult;
 import com.fovsoft.entity.YmFamilyBase;
+import com.fovsoft.entity.YmFamilyBaseAddition;
+import com.fovsoft.entity.YmFamilyBaseCondition;
 import com.fovsoft.service.FamilySerivce;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -12,8 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.jws.WebMethod;
-import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -53,5 +53,34 @@ public class FamilyRestController {
     public JsonResult add(@RequestBody YmFamilyBase ymFamilyBase) {
         int id = familySerivce.addOrUpdateFamilyBase(ymFamilyBase);
         return new JsonResult(Integer.valueOf(id));
+    }
+
+
+    /**
+     *
+     * @param ymFamilyBaseAddition
+     * @return
+     */
+    @RequestMapping(value = "/addAddition", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    public JsonResult addAddition(@RequestBody YmFamilyBaseAddition ymFamilyBaseAddition) {
+        int id = familySerivce.addOrUpdateFamilyBaseAddition(ymFamilyBaseAddition);
+        return new JsonResult(Integer.valueOf(id));
+    }
+
+    /**
+     *
+     * @param ymFamilyBaseCondition
+     * @return
+     */
+    @RequestMapping(value = "/addCondition", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    public JsonResult addCondition(@RequestBody YmFamilyBaseCondition ymFamilyBaseCondition) {
+        int id = familySerivce.addOrUpdateFamilyBaseCondition(ymFamilyBaseCondition);
+        return new JsonResult(Integer.valueOf(id));
+    }
+
+    @RequestMapping(value = "/getMemberList",  produces = "application/json;charset=UTF-8")
+    public JsonResult getFamilyMember() {
+
+        return new JsonResult();
     }
 }

@@ -19,8 +19,9 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "ym_family_base")
 public class YmFamilyBase implements Serializable {
-    @JsonProperty(value = "baseid")
+
     @Id
+    @JsonProperty(value = "baseid")
     private int id;
     private int city;
     private int county;

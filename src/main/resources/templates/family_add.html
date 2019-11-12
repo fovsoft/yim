@@ -14,9 +14,18 @@
     <script src="/assets/layui/dist/layui.js" charset="utf-8"></script>
     <script src="/assets/ym/family_add.js"></script>
 </head>
-<script type="text/css">
-    .layui-form-label {width: 120px}
-</script>
+<style type="text/css">
+    .layui-table-cell {
+        height: auto;
+        line-height: 28px;
+        padding: 0 15px;
+        position: relative;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: normal;
+        box-sizing: border-box;
+    }
+</style>
 <body>
 <div class="layui-tab layui-tab-card" lay-filter="addBaseInfo">
     <ul class="layui-tab-title">
@@ -195,10 +204,14 @@
                 </div>
             </form>
         </div>
-        <div class="layui-tab-item">2sdgsdg</div>
+        <!-- 家庭成员 -->
+        <div class="layui-tab-item">
+            <table class="layui-hide layui-table-cell" id="tableMember" lay-filter="tableMember"></table>
+        </div>
         <!-- 致贫原因及家庭人口情况 -->
         <div class="layui-tab-item">
-                <form class="layui-form">
+            <form class="layui-form">
+                    <input type="hidden" name="additionid" id="additionid"/>
                     <div class="layui-form-item">
                         <div class="layui-inline">
                             <label class="layui-form-label" style="width: 120px">致贫原因1<span style="color: red">（必填）</span></label>
@@ -267,15 +280,15 @@
                     <div class="layui-form-item">
                         <div class="layui-inline">
                             <label class="layui-form-label" style="width: 120px">年初家庭人口数</label>
-                            <div id="" class="layui-input-inline">
-                                <input class="layui-input" />
+                            <div  class="layui-input-inline">
+                                <input id="household_num_Jan" name="household_num_Jan" class="layui-input" />
                             </div>
                         </div>
 
                         <div class="layui-inline">
                             <label class="layui-form-label" style="width: 120px">年底家庭人口数</label>
                             <div class="layui-input-inline">
-                                <input class="layui-input" />
+                                <input id="household_num_Dec" name="household_num_Dec" class="layui-input" />
                             </div>
                         </div>
                     </div>
@@ -286,15 +299,225 @@
                         </div>
                     </div>
                 </form>
-
         </div>
-        <div class="layui-tab-item">4sdgsd</div>
-        <div class="layui-tab-item">5</div>
+        <!-- 生产生活条件 -->
+        <div class="layui-tab-item">
+            <form class="layui-form">
+                <input type="hidden" name="conditionid" id="conditionid"/>
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label" style="width: 140px">耕地面积（亩）</label>
+                        <div id="area_cultivated"  class="layui-input-inline" style="width: 60px">
+                            <input name="area_cultivated" class="layui-input" style="width: 60px" />
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label" style="width: 140px">林地面积（亩）</label>
+                        <div id="area_woodland"  class="layui-input-inline" style="width: 60px">
+                            <input name="area_woodland" class="layui-input" style="width: 60px"/>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label" style="width: 140px">退耕还林面积（亩）</label>
+                        <div id="area_turninto"  class="layui-input-inline" style="width: 60px">
+                            <input name="area_turninto" class="layui-input" style="width: 60px"/>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label" style="width: 140px">林果面积（亩）</label>
+                        <div id="area_fruit"  class="layui-input-inline" style="width: 60px">
+                            <input name="area_fruit" class="layui-input" style="width: 60px"/>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label" style="width: 140px">牧草地面积（亩)</label>
+                        <div id="area_foragegrass"  class="layui-input-inline" style="width: 60px">
+                            <input name="area_foragegrass" class="layui-input" style="width: 60px"/>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label" style="width: 140px">水面面积（亩）</label>
+                        <div id="area_waters"  class="layui-input-inline" style="width: 60px">
+                            <input name="area_waters" class="layui-input" style="width: 60px"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label" style="width: 140px">加入农民专业合作社</label>
+                        <div id="is_cooperative"  class="layui-input-inline" style="width: 60px">
+                            <select name="is_cooperative" class="layui-input" style="width: 60px">
+                                <option value="0">否</option>
+                                <option value="1">是</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label" style="width: 140px">有龙头企业带动</label>
+                        <div id="get_leaded"  class="layui-input-inline" style="width: 60px">
+                            <select name="get_leaded" class="layui-input" style="width: 60px">
+                                <option value="0">否</option>
+                                <option value="1">是</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label" style="width: 140px">致富带头人带动</label>
+                        <div id="get_pioneer"  class="layui-input-inline" style="width: 60px">
+                            <select name="get_pioneer" class="layui-input" style="width: 60px">
+                                <option value="0">否</option>
+                                <option value="1">是</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label" style="width: 140px">通生活用电</label>
+                        <div id="get_electric"  class="layui-input-inline" style="width: 60px">
+                            <select name="get_electric" class="layui-input" style="width: 60px">
+                                <option value="0">否</option>
+                                <option value="1">是</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label" style="width: 140px">通广播电视</label>
+                        <div id="get_television"  class="layui-input-inline" style="width: 60px">
+                            <select name="get_television" class="layui-input" style="width: 60px">
+                                <option value="0">否</option>
+                                <option value="1">是</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label" style="width: 140px">解决安全饮用水</label>
+                        <div id="get_potablewater"  class="layui-input-inline" style="width: 60px">
+                            <select name="get_potablewater" class="layui-input" style="width: 60px">
+                                <option value="0">否</option>
+                                <option value="1">是</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label" style="width: 140px">有卫生厕所</label>
+                        <div id="get_toilet"  class="layui-input-inline" style="width: 60px">
+                            <select name="get_toilet" class="layui-input" style="width: 60px">
+                                <option value="0">否</option>
+                                <option value="1">是</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label" style="width: 140px">与村主干路距离(公里)</label>
+                        <div id="distance_mainroad"  class="layui-input-inline" style="width: 60px">
+                            <input name="distance_mainroad" class="layui-input" style="width: 60px"/>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label" style="width: 140px">入户路类型</label>
+                        <div id="type_road"  class="layui-input-inline" style="width: 100px">
+                            <select name="type_road" class="layui-input" style="width: 100px">
+                                <option value="0">请选择</option>
+                                <option value="1">泥土路</option>
+                                <option value="2">砂石路</option>
+                                <option value="3">硬化路</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label" style="width: 140px">住房面积</label>
+                        <div id="area_housing"  class="layui-input-inline" style="width: 60px">
+                            <input name="area_housing" class="layui-input" style="width: 60px"/>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label" style="width: 140px">是否危房户</label>
+                        <div id="is_dilapidated"  class="layui-input-inline" style="width: 60px">
+                            <select name="is_dilapidated" class="layui-input" style="width: 60px">
+                                <option value="0">否</option>
+                                <option value="1">是</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label" style="width: 140px">危房级别</label>
+                        <div id="level_dilapidated"  class="layui-input-inline" style="width: 60px">
+                            <select name="level_dilapidated" class="layui-input" style="width: 60px">
+                                <option value="0">否</option>
+                                <option value="1">是</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label" style="width: 140px">危改年度</label>
+                        <div id="year_reform"  class="layui-input-inline" style="width: 60px">
+                            <input name="year_reform" class="layui-input" style="width: 60px"/>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label" style="width: 140px">主要燃料类型</label>
+                        <div class="layui-input-inline" style="width: 100px">
+                            <select id="type_fuel" name="type_fuel" class="layui-input" lay-filter="type_fuel" style="width: 100px">
+                                <option value="0">请选择</option>
+                                <option value="1">柴草</option>
+                                <option value="2">干畜粪</option>
+                                <option value="3">煤炭</option>
+                                <option value="4">清洁能源</option>
+                                <option value="5">其他</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label id="label_type_fuel_other" class="layui-form-label" style="width: 140px; color: gainsboro">具体燃料名称</label>
+                        <div class="layui-input-inline" style="width: 160px">
+                            <input id="type_fuel_other" name="type_fuel_other" autocomplete="off" class="layui-input layui-disabled" disabled="" style="width: 160px"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button type="button" class="layui-btn" lay-submit lay-filter="base4">提交</button>
+                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="layui-tab-item">
+            <form class="layui-form">
+                <input type="hidden" name="changeid" id="changeid"/>
+                <div class="layui-form-item layui-form-text">
+                    <label class="layui-form-label">变更情况说明</label>
+                    <div class="layui-input-block">
+                        <textarea name="desc" placeholder="请输入内容" class="layui-textarea"></textarea>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button type="button" class="layui-btn" lay-submit lay-filter="base5">提交</button>
+                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                    </div>
+                </div>
+            </form>
+        </div>
         <div class="layui-tab-item">6</div>
     </div>
 </div>
 </body>
 <script type="text/javascript">
+</script>
 
+<script type="text/html" id="tableMemberToolbar">
+    <div class="layui-btn-container">
+        <button class="layui-btn layui-btn-normal layui-btn-sm" lay-event="add">新增家庭成员</button>
+        <button class="layui-btn layui-btn-danger layui-btn-sm" lay-event="del">删除家庭成员</button>
+    </div>
+</script>
+
+<script type="text/html" id="tableMemberBar">
+    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 </script>
 </html>
