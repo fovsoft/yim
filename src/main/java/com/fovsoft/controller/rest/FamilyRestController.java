@@ -42,7 +42,7 @@ public class FamilyRestController {
             list.add(data);
         }
         Map result = new HashMap();
-        result.put("data", list);
+//        result.put("data", list);
         result.put("msg", "");
         result.put("count", 1);
         result.put("code", 0);

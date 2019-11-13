@@ -26,4 +26,7 @@ public class FamilyController {
     public String familyAdd() {
         return "family_add";
     }
+
+    @RequestMapping(value = "/memberAdd")
+    public String memberAdd() {return "member_add";}
 }

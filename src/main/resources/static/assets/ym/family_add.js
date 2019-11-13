@@ -287,14 +287,12 @@ let family_add = (function () {
             let checkStatus = table.checkStatus(obj.config.id);
             switch (obj.event) {
                 case 'add':
-                    layer.open({
+                    parent.layer.open({
                         title: '新增家庭成员',
                         type: 2,
                         skin: 'layui-layer-rim', //加上边框
                         area: ['70%', '60%'], //宽高
-                        content: '/memberAdd',
-                        moveOut : true,
-
+                        content: '/memberAdd'
                     });
                     break;
                 case 'del':
