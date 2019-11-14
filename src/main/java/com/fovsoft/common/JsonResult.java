@@ -7,14 +7,14 @@ package com.fovsoft.common;
  */
 public class JsonResult<T> {
     private T data;
-    private String code;
+    private int code;
     private String msg;
 
     /**
      * 若没有数据返回，默认状态码为 0，提示信息为“操作成功！”
      */
     public JsonResult() {
-        this.code = "0";
+        this.code = 0;
         this.msg = "操作成功！";
     }
 
@@ -23,7 +23,7 @@ public class JsonResult<T> {
      * @param code
      * @param msg
      */
-    public JsonResult(String code, String msg) {
+    public JsonResult(int code, String msg) {
         this.code = code;
         this.msg = msg;
     }
@@ -34,7 +34,7 @@ public class JsonResult<T> {
      */
     public JsonResult(T data) {
         this.data = data;
-        this.code = "0";
+        this.code = 0;
         this.msg = "操作成功！";
     }
 
@@ -45,7 +45,7 @@ public class JsonResult<T> {
      */
     public JsonResult(T data, String msg) {
         this.data = data;
-        this.code = "0";
+        this.code = 0;
         this.msg = msg;
     }
 
@@ -58,11 +58,11 @@ public class JsonResult<T> {
         this.data = data;
     }
 
-    public String getCode() {
+    public int getCode() {
         return code;
     }
 
-    public void setCode(String code) {
+    public void setCode(int code) {
         this.code = code;
     }
 

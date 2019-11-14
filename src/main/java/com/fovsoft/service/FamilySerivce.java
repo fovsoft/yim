@@ -5,6 +5,9 @@ import com.fovsoft.dao.YmFamilyBaseConditionDao;
 import com.fovsoft.dao.YmFamilyBaseDao;
 import com.fovsoft.dao.YmFamilyBaseMemberDao;
 import com.fovsoft.entity.*;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -30,8 +33,14 @@ public class FamilySerivce {
     @Resource
     private YmFamilyBaseMemberDao ymFamilyBaseMemberDao;
 
-    public List<YmFamily> getList() {
-        return null;
+    /**
+     *
+     * @return
+     */
+    public PageInfo getList(Integer page, Integer limit) {
+        PageHelper.startPage(page, limit);
+        List<YmFamilyBaseAndHouseHolder> list =  ymFamilyBaseDao.list();
+        return new PageInfo(list);
     }
 
     /**
