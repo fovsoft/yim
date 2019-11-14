@@ -3,10 +3,8 @@ package com.fovsoft.service;
 import com.fovsoft.dao.YmFamilyBaseAdditionDao;
 import com.fovsoft.dao.YmFamilyBaseConditionDao;
 import com.fovsoft.dao.YmFamilyBaseDao;
-import com.fovsoft.entity.YmFamily;
-import com.fovsoft.entity.YmFamilyBase;
-import com.fovsoft.entity.YmFamilyBaseAddition;
-import com.fovsoft.entity.YmFamilyBaseCondition;
+import com.fovsoft.dao.YmFamilyBaseMemberDao;
+import com.fovsoft.entity.*;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -28,6 +26,9 @@ public class FamilySerivce {
 
     @Resource
     private YmFamilyBaseConditionDao ymFamilyBaseConditionDao;
+
+    @Resource
+    private YmFamilyBaseMemberDao ymFamilyBaseMemberDao;
 
     public List<YmFamily> getList() {
         return null;
@@ -88,6 +89,21 @@ public class FamilySerivce {
             // 更新
             ymFamilyBaseConditionDao.update(ymFamilyBaseCondition);
             id = ymFamilyBaseCondition.getId();
+        }
+        return id;
+    }
+
+    public int addOrUpdateFamilyBaseMember(YmFamilyBaseMember ymFamilyBaseMember) {
+        int id = 0;
+        if(ymFamilyBaseMember.getId() == 0) {
+            // 插入
+            ymFamilyBaseMemberDao.add(ymFamilyBaseMember);
+            id = ymFamilyBaseMember.getId();
+        }
+        else {
+            // 更新
+            ymFamilyBaseMemberDao.update(ymFamilyBaseMember);
+            id = ymFamilyBaseMember.getId();
         }
         return id;
     }

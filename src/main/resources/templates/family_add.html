@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <meta name="description" content=""/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
-    <meta name="_csrf" th:content="${_csrf.token}" />
+    <meta name="_csrf" th:content="${_csrf.token}"/>
     <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
     <!-- layui css -->
     <link rel="stylesheet" href="/assets/layui/dist/css/layui.css" media="all">
@@ -20,10 +20,11 @@
         line-height: 28px;
         padding: 0 15px;
         position: relative;
-        overflow: hidden;
+        /*overflow: hidden;*/
         text-overflow: ellipsis;
         white-space: normal;
         box-sizing: border-box;
+        overflow: auto;
     }
 </style>
 <body>
@@ -45,7 +46,8 @@
                     <div class="layui-inline">
                         <label class="layui-form-label">家庭住址：</label>
                         <div class="layui-input-inline">
-                            <select id="city" name="city" lay-verify="required" lay-filter="city" lay-search="" style="width: 20px">
+                            <select id="city" name="city" lay-verify="required" lay-filter="city" lay-search=""
+                                    style="width: 20px">
                                 <!--<option value="">直接选择或搜索选择</option>-->
                                 <!--<option value="1">南宁</option>-->
                                 <!--<option value="20000">柳州</option>-->
@@ -56,13 +58,15 @@
                         <div class="layui-form-mid layui-word-aux">市</div>
 
                         <div class="layui-input-inline">
-                            <select id="county" name="county" lay-verify="required" lay-filter="county" lay-search="" style="width: 20px">
+                            <select id="county" name="county" lay-verify="required" lay-filter="county"
+                                    lay-search="" style="width: 20px">
                             </select>
                         </div>
                         <div class="layui-form-mid layui-word-aux">县（市、区）</div>
 
                         <div class="layui-input-inline">
-                            <select id="town" name="town" lay-verify="required" lay-filter="town" lay-search="" style="width: 20px">
+                            <select id="town" name="town" lay-verify="required" lay-filter="town" lay-search=""
+                                    style="width: 20px">
                             </select>
                         </div>
                         <div class="layui-form-mid layui-word-aux">镇（乡、街道）</div>
@@ -72,7 +76,8 @@
                     <div class="layui-inline">
                         <div class="layui-input-inline" style="width:80px;margin-left: 110px">
                             <div class="layui-input-inline" style="width:80px;">
-                                <input type="avillage" name="avillage" lay-verify="required" autocomplete="off" value="测试行政村"
+                                <input type="avillage" name="avillage" lay-verify="required" autocomplete="off"
+                                       value="测试行政村"
                                        class="layui-input">
                             </div>
                         </div>
@@ -80,7 +85,8 @@
 
                         <div class="layui-input-inline" style="width:100px;">
                             <div class="layui-input-inline" style="width:100px;">
-                                <input id="nvillage" name="nvillage" lay-verify="required" autocomplete="off" value="测试自然村屯"
+                                <input id="nvillage" name="nvillage" lay-verify="required" autocomplete="off"
+                                       value="测试自然村屯"
                                        class="layui-input">
                             </div>
                         </div>
@@ -94,7 +100,8 @@
                     <div class="layui-inline">
                         <label class="layui-form-label">联系电话：</label>
                         <div class="layui-input-inline">
-                            <input type="tel" name="tel" id="tel" lay-verify="required|phone" autocomplete="off" value="13222221111"
+                            <input type="tel" name="tel" id="tel" lay-verify="required|phone" autocomplete="off"
+                                   value="13222221111"
                                    class="layui-input">
                         </div>
                     </div>
@@ -108,7 +115,8 @@
                     <div class="layui-inline">
                         <label class="layui-form-label">银行卡号：</label>
                         <div class="layui-input-inline" style="width:260px;">
-                            <input type="text" name="bk_num" id="bk_num" autocomplete="off" class="layui-input" placeholder="（选填）">
+                            <input type="text" name="bk_num" id="bk_num" autocomplete="off" class="layui-input"
+                                   placeholder="（选填）">
                         </div>
                     </div>
                 </div>
@@ -132,14 +140,16 @@
                     <div class="layui-inline">
                         <div class="layui-form-mid">计划脱贫年度：</div>
                         <div class="layui-input-inline">
-                            <input id="poverty_relief_tm" type="text" name="poverty_relief_tm" lay-verify="required" autocomplete="off" value="2020"
+                            <input id="poverty_relief_tm" type="text" name="poverty_relief_tm" lay-verify="required"
+                                   autocomplete="off" value="2020"
                                    class="layui-input" placeholder="yyyy">
                         </div>
                     </div>
                     <div class="layui-inline">
                         <div class="layui-form-mid">返贫年度：</div>
                         <div class="layui-input-inline">
-                            <input id="poverty_rtn_tm" type="text" name="poverty_rtn_tm" lay-verify="required" autocomplete="off" value="2018"
+                            <input id="poverty_rtn_tm" type="text" name="poverty_rtn_tm" lay-verify="required"
+                                   autocomplete="off" value="2018"
                                    class="layui-input" placeholder="yyyy">
                         </div>
                     </div>
@@ -152,7 +162,8 @@
                         <label class="layui-form-label">返贫原因：</label>
                         <div class="layui-inline">
                             <div class="layui-input-inline">
-                                <input type="text" id="poverty_rtn_rsn" name="poverty_rtn_rsn" lay-verify="required" autocomplete="off" value="因学"
+                                <input type="text" id="poverty_rtn_rsn" name="poverty_rtn_rsn" lay-verify="required"
+                                       autocomplete="off" value="因学"
                                        class="layui-input">
                             </div>
                         </div>
@@ -183,7 +194,8 @@
                     <div class="layui-inline">
                         <label class="layui-form-label" style="width: auto">搬迁方式：</label>
                         <div class="layui-input-inline">
-                            <input type="text" id="relocated_way" name="relocated_way" lay-verify="required" autocomplete="off"
+                            <input type="text" id="relocated_way" name="relocated_way" lay-verify="required"
+                                   autocomplete="off"
                                    class="layui-input" value="测试搬迁方式"/>
                         </div>
                     </div>
@@ -191,7 +203,8 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">搬迁地址：</label>
                     <div class="layui-input-block">
-                        <input type="text" id="relocated_addr" name="relocated_addr" lay-verify="required" placeholder="" autocomplete="off"
+                        <input type="text" id="relocated_addr" name="relocated_addr" lay-verify="required"
+                               placeholder="" autocomplete="off"
                                class="layui-input" value="测试搬迁地址"/>
                     </div>
                 </div>
@@ -206,99 +219,106 @@
         </div>
         <!-- 家庭成员 -->
         <div class="layui-tab-item">
-            <table class="layui-hide layui-table-cell" id="tableMember" lay-filter="tableMember"></table>
+            <table class="layui-table-cell" id="tableMember" lay-filter="tableMember"></table>
         </div>
         <!-- 致贫原因及家庭人口情况 -->
         <div class="layui-tab-item">
             <form class="layui-form">
-                    <input type="hidden" name="additionid" id="additionid"/>
-                    <div class="layui-form-item">
-                        <div class="layui-inline">
-                            <label class="layui-form-label" style="width: 120px">致贫原因1<span style="color: red">（必填）</span></label>
-                            <div class="layui-input-inline">
-                                <select  id="poverty_causes1" name="poverty_causes1" class="layui-unselect layui-form-select"  style="width: 100%;" lay-verify="required" lay-filter="poverty_causes1">
-                                    <option value="">请选择</option>
-                                    <option value="1">因病</option>
-                                    <option value="2">因残</option>
-                                    <option value="3">因学</option>
-                                    <option value="4">因灾</option>
-                                    <option value="5">因婚</option>
-                                    <option value="6">缺土地</option>
-                                    <option value="7">缺水</option>
-                                    <option value="8">缺技术</option>
-                                    <option value="9">缺劳力</option>
-                                    <option value="10">缺资金</option>
-                                    <option value="11">交通条件落后</option>
-                                    <option value="12">自身发展动力不足</option>
-                                    <option value="13">因丧</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="layui-inline">
-                            <label class="layui-form-label" style="width: 120px">致贫原因2（选填）</label>
-                            <div class="layui-input-inline">
-                                <select  id="poverty_causes2" name="poverty_causes2" class="layui-unselect layui-form-select"  style="width: 100%;" lay-filter="poverty_causes2">
-                                    <option value="">请选择</option>
-                                    <option value="1">因病</option>
-                                    <option value="2">因残</option>
-                                    <option value="3">因学</option>
-                                    <option value="4">因灾</option>
-                                    <option value="5">因婚</option>
-                                    <option value="6">缺土地</option>
-                                    <option value="7">缺水</option>
-                                    <option value="8">缺技术</option>
-                                    <option value="9">缺劳力</option>
-                                    <option value="10">缺资金</option>
-                                    <option value="11">交通条件落后</option>
-                                    <option value="12">自身发展动力不足</option>
-                                    <option value="13">因丧</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="layui-inline">
-                            <label class="layui-form-label" style="width: 120px">致贫原因3（选填）</label>
-                            <div class="layui-input-inline">
-                                <select  id="poverty_causes3" name="poverty_causes3" class="layui-unselect layui-form-select"  style="width: 100%;" lay-filter="poverty_causes3">
-                                    <option value="">请选择</option>
-                                    <option value="1">因病</option>
-                                    <option value="2">因残</option>
-                                    <option value="3">因学</option>
-                                    <option value="4">因灾</option>
-                                    <option value="5">因婚</option>
-                                    <option value="6">缺土地</option>
-                                    <option value="7">缺水</option>
-                                    <option value="8">缺技术</option>
-                                    <option value="9">缺劳力</option>
-                                    <option value="10">缺资金</option>
-                                    <option value="11">交通条件落后</option>
-                                    <option value="12">自身发展动力不足</option>
-                                    <option value="13">因丧</option>
-                                </select>
-                            </div>
+                <input type="hidden" name="additionid" id="additionid"/>
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label" style="width: 120px">致贫原因1<span
+                                style="color: red">（必填）</span></label>
+                        <div class="layui-input-inline">
+                            <select id="poverty_causes1" name="poverty_causes1"
+                                    class="layui-unselect layui-form-select" style="width: 100%;"
+                                    lay-verify="required" lay-filter="poverty_causes1">
+                                <option value="">请选择</option>
+                                <option value="1">因病</option>
+                                <option value="2">因残</option>
+                                <option value="3">因学</option>
+                                <option value="4">因灾</option>
+                                <option value="5">因婚</option>
+                                <option value="6">缺土地</option>
+                                <option value="7">缺水</option>
+                                <option value="8">缺技术</option>
+                                <option value="9">缺劳力</option>
+                                <option value="10">缺资金</option>
+                                <option value="11">交通条件落后</option>
+                                <option value="12">自身发展动力不足</option>
+                                <option value="13">因丧</option>
+                            </select>
                         </div>
                     </div>
-                    <div class="layui-form-item">
-                        <div class="layui-inline">
-                            <label class="layui-form-label" style="width: 120px">年初家庭人口数</label>
-                            <div  class="layui-input-inline">
-                                <input id="household_num_Jan" name="household_num_Jan" class="layui-input" />
-                            </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label" style="width: 120px">致贫原因2（选填）</label>
+                        <div class="layui-input-inline">
+                            <select id="poverty_causes2" name="poverty_causes2"
+                                    class="layui-unselect layui-form-select" style="width: 100%;"
+                                    lay-filter="poverty_causes2">
+                                <option value="">请选择</option>
+                                <option value="1">因病</option>
+                                <option value="2">因残</option>
+                                <option value="3">因学</option>
+                                <option value="4">因灾</option>
+                                <option value="5">因婚</option>
+                                <option value="6">缺土地</option>
+                                <option value="7">缺水</option>
+                                <option value="8">缺技术</option>
+                                <option value="9">缺劳力</option>
+                                <option value="10">缺资金</option>
+                                <option value="11">交通条件落后</option>
+                                <option value="12">自身发展动力不足</option>
+                                <option value="13">因丧</option>
+                            </select>
                         </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label" style="width: 120px">致贫原因3（选填）</label>
+                        <div class="layui-input-inline">
+                            <select id="poverty_causes3" name="poverty_causes3"
+                                    class="layui-unselect layui-form-select" style="width: 100%;"
+                                    lay-filter="poverty_causes3">
+                                <option value="">请选择</option>
+                                <option value="1">因病</option>
+                                <option value="2">因残</option>
+                                <option value="3">因学</option>
+                                <option value="4">因灾</option>
+                                <option value="5">因婚</option>
+                                <option value="6">缺土地</option>
+                                <option value="7">缺水</option>
+                                <option value="8">缺技术</option>
+                                <option value="9">缺劳力</option>
+                                <option value="10">缺资金</option>
+                                <option value="11">交通条件落后</option>
+                                <option value="12">自身发展动力不足</option>
+                                <option value="13">因丧</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label" style="width: 120px">年初家庭人口数</label>
+                        <div class="layui-input-inline">
+                            <input id="household_num_Jan" name="household_num_Jan" class="layui-input"/>
+                        </div>
+                    </div>
 
-                        <div class="layui-inline">
-                            <label class="layui-form-label" style="width: 120px">年底家庭人口数</label>
-                            <div class="layui-input-inline">
-                                <input id="household_num_Dec" name="household_num_Dec" class="layui-input" />
-                            </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label" style="width: 120px">年底家庭人口数</label>
+                        <div class="layui-input-inline">
+                            <input id="household_num_Dec" name="household_num_Dec" class="layui-input"/>
                         </div>
                     </div>
-                    <div class="layui-form-item">
-                        <div class="layui-input-block">
-                            <button type="button" class="layui-btn" lay-submit lay-filter="base3">提交</button>
-                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
-                        </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button type="button" class="layui-btn" lay-submit lay-filter="base3">提交</button>
+                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                     </div>
-                </form>
+                </div>
+            </form>
         </div>
         <!-- 生产生活条件 -->
         <div class="layui-tab-item">
@@ -307,37 +327,37 @@
                 <div class="layui-form-item">
                     <div class="layui-inline">
                         <label class="layui-form-label" style="width: 140px">耕地面积（亩）</label>
-                        <div id="area_cultivated"  class="layui-input-inline" style="width: 60px">
-                            <input name="area_cultivated" class="layui-input" style="width: 60px" />
+                        <div id="area_cultivated" class="layui-input-inline" style="width: 60px">
+                            <input name="area_cultivated" class="layui-input" style="width: 60px"/>
                         </div>
                     </div>
                     <div class="layui-inline">
                         <label class="layui-form-label" style="width: 140px">林地面积（亩）</label>
-                        <div id="area_woodland"  class="layui-input-inline" style="width: 60px">
+                        <div id="area_woodland" class="layui-input-inline" style="width: 60px">
                             <input name="area_woodland" class="layui-input" style="width: 60px"/>
                         </div>
                     </div>
                     <div class="layui-inline">
                         <label class="layui-form-label" style="width: 140px">退耕还林面积（亩）</label>
-                        <div id="area_turninto"  class="layui-input-inline" style="width: 60px">
+                        <div id="area_turninto" class="layui-input-inline" style="width: 60px">
                             <input name="area_turninto" class="layui-input" style="width: 60px"/>
                         </div>
                     </div>
                     <div class="layui-inline">
                         <label class="layui-form-label" style="width: 140px">林果面积（亩）</label>
-                        <div id="area_fruit"  class="layui-input-inline" style="width: 60px">
+                        <div id="area_fruit" class="layui-input-inline" style="width: 60px">
                             <input name="area_fruit" class="layui-input" style="width: 60px"/>
                         </div>
                     </div>
                     <div class="layui-inline">
                         <label class="layui-form-label" style="width: 140px">牧草地面积（亩)</label>
-                        <div id="area_foragegrass"  class="layui-input-inline" style="width: 60px">
+                        <div id="area_foragegrass" class="layui-input-inline" style="width: 60px">
                             <input name="area_foragegrass" class="layui-input" style="width: 60px"/>
                         </div>
                     </div>
                     <div class="layui-inline">
                         <label class="layui-form-label" style="width: 140px">水面面积（亩）</label>
-                        <div id="area_waters"  class="layui-input-inline" style="width: 60px">
+                        <div id="area_waters" class="layui-input-inline" style="width: 60px">
                             <input name="area_waters" class="layui-input" style="width: 60px"/>
                         </div>
                     </div>
@@ -346,7 +366,7 @@
                 <div class="layui-form-item">
                     <div class="layui-inline">
                         <label class="layui-form-label" style="width: 140px">加入农民专业合作社</label>
-                        <div id="is_cooperative"  class="layui-input-inline" style="width: 60px">
+                        <div id="is_cooperative" class="layui-input-inline" style="width: 60px">
                             <select name="is_cooperative" class="layui-input" style="width: 60px">
                                 <option value="0">否</option>
                                 <option value="1">是</option>
@@ -355,7 +375,7 @@
                     </div>
                     <div class="layui-inline">
                         <label class="layui-form-label" style="width: 140px">有龙头企业带动</label>
-                        <div id="get_leaded"  class="layui-input-inline" style="width: 60px">
+                        <div id="get_leaded" class="layui-input-inline" style="width: 60px">
                             <select name="get_leaded" class="layui-input" style="width: 60px">
                                 <option value="0">否</option>
                                 <option value="1">是</option>
@@ -364,7 +384,7 @@
                     </div>
                     <div class="layui-inline">
                         <label class="layui-form-label" style="width: 140px">致富带头人带动</label>
-                        <div id="get_pioneer"  class="layui-input-inline" style="width: 60px">
+                        <div id="get_pioneer" class="layui-input-inline" style="width: 60px">
                             <select name="get_pioneer" class="layui-input" style="width: 60px">
                                 <option value="0">否</option>
                                 <option value="1">是</option>
@@ -373,7 +393,7 @@
                     </div>
                     <div class="layui-inline">
                         <label class="layui-form-label" style="width: 140px">通生活用电</label>
-                        <div id="get_electric"  class="layui-input-inline" style="width: 60px">
+                        <div id="get_electric" class="layui-input-inline" style="width: 60px">
                             <select name="get_electric" class="layui-input" style="width: 60px">
                                 <option value="0">否</option>
                                 <option value="1">是</option>
@@ -382,7 +402,7 @@
                     </div>
                     <div class="layui-inline">
                         <label class="layui-form-label" style="width: 140px">通广播电视</label>
-                        <div id="get_television"  class="layui-input-inline" style="width: 60px">
+                        <div id="get_television" class="layui-input-inline" style="width: 60px">
                             <select name="get_television" class="layui-input" style="width: 60px">
                                 <option value="0">否</option>
                                 <option value="1">是</option>
@@ -391,7 +411,7 @@
                     </div>
                     <div class="layui-inline">
                         <label class="layui-form-label" style="width: 140px">解决安全饮用水</label>
-                        <div id="get_potablewater"  class="layui-input-inline" style="width: 60px">
+                        <div id="get_potablewater" class="layui-input-inline" style="width: 60px">
                             <select name="get_potablewater" class="layui-input" style="width: 60px">
                                 <option value="0">否</option>
                                 <option value="1">是</option>
@@ -400,7 +420,7 @@
                     </div>
                     <div class="layui-inline">
                         <label class="layui-form-label" style="width: 140px">有卫生厕所</label>
-                        <div id="get_toilet"  class="layui-input-inline" style="width: 60px">
+                        <div id="get_toilet" class="layui-input-inline" style="width: 60px">
                             <select name="get_toilet" class="layui-input" style="width: 60px">
                                 <option value="0">否</option>
                                 <option value="1">是</option>
@@ -412,13 +432,13 @@
                 <div class="layui-form-item">
                     <div class="layui-inline">
                         <label class="layui-form-label" style="width: 140px">与村主干路距离(公里)</label>
-                        <div id="distance_mainroad"  class="layui-input-inline" style="width: 60px">
+                        <div id="distance_mainroad" class="layui-input-inline" style="width: 60px">
                             <input name="distance_mainroad" class="layui-input" style="width: 60px"/>
                         </div>
                     </div>
                     <div class="layui-inline">
                         <label class="layui-form-label" style="width: 140px">入户路类型</label>
-                        <div id="type_road"  class="layui-input-inline" style="width: 100px">
+                        <div id="type_road" class="layui-input-inline" style="width: 100px">
                             <select name="type_road" class="layui-input" style="width: 100px">
                                 <option value="0">请选择</option>
                                 <option value="1">泥土路</option>
@@ -429,13 +449,13 @@
                     </div>
                     <div class="layui-inline">
                         <label class="layui-form-label" style="width: 140px">住房面积</label>
-                        <div id="area_housing"  class="layui-input-inline" style="width: 60px">
+                        <div id="area_housing" class="layui-input-inline" style="width: 60px">
                             <input name="area_housing" class="layui-input" style="width: 60px"/>
                         </div>
                     </div>
                     <div class="layui-inline">
                         <label class="layui-form-label" style="width: 140px">是否危房户</label>
-                        <div id="is_dilapidated"  class="layui-input-inline" style="width: 60px">
+                        <div id="is_dilapidated" class="layui-input-inline" style="width: 60px">
                             <select name="is_dilapidated" class="layui-input" style="width: 60px">
                                 <option value="0">否</option>
                                 <option value="1">是</option>
@@ -444,7 +464,7 @@
                     </div>
                     <div class="layui-inline">
                         <label class="layui-form-label" style="width: 140px">危房级别</label>
-                        <div id="level_dilapidated"  class="layui-input-inline" style="width: 60px">
+                        <div id="level_dilapidated" class="layui-input-inline" style="width: 60px">
                             <select name="level_dilapidated" class="layui-input" style="width: 60px">
                                 <option value="0">否</option>
                                 <option value="1">是</option>
@@ -453,14 +473,15 @@
                     </div>
                     <div class="layui-inline">
                         <label class="layui-form-label" style="width: 140px">危改年度</label>
-                        <div id="year_reform"  class="layui-input-inline" style="width: 60px">
+                        <div id="year_reform" class="layui-input-inline" style="width: 60px">
                             <input name="year_reform" class="layui-input" style="width: 60px"/>
                         </div>
                     </div>
                     <div class="layui-inline">
                         <label class="layui-form-label" style="width: 140px">主要燃料类型</label>
                         <div class="layui-input-inline" style="width: 100px">
-                            <select id="type_fuel" name="type_fuel" class="layui-input" lay-filter="type_fuel" style="width: 100px">
+                            <select id="type_fuel" name="type_fuel" class="layui-input" lay-filter="type_fuel"
+                                    style="width: 100px">
                                 <option value="0">请选择</option>
                                 <option value="1">柴草</option>
                                 <option value="2">干畜粪</option>
@@ -471,9 +492,11 @@
                         </div>
                     </div>
                     <div class="layui-inline">
-                        <label id="label_type_fuel_other" class="layui-form-label" style="width: 140px; color: gainsboro">具体燃料名称</label>
+                        <label id="label_type_fuel_other" class="layui-form-label"
+                               style="width: 140px; color: gainsboro">具体燃料名称</label>
                         <div class="layui-input-inline" style="width: 160px">
-                            <input id="type_fuel_other" name="type_fuel_other" autocomplete="off" class="layui-input layui-disabled" disabled="" style="width: 160px"/>
+                            <input id="type_fuel_other" name="type_fuel_other" autocomplete="off"
+                                   class="layui-input layui-disabled" disabled="" style="width: 160px"/>
                         </div>
                     </div>
                 </div>
@@ -507,6 +530,9 @@
 </div>
 </body>
 <script type="text/javascript">
+    var getBaseID = function() {
+        return $("#baseid").val();
+    }
 </script>
 
 <script type="text/html" id="tableMemberToolbar">
@@ -520,4 +546,5 @@
     <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
     <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 </script>
+
 </html>

@@ -3,7 +3,6 @@ $(document).ready(function () {
 });
 let family_add = (function () {
 
-
     layui.use(['form', 'element', 'laydate', 'table'], function () {
         var element, laydate, form, table;
         element = layui.element;
@@ -337,5 +336,4 @@ let family_add = (function () {
         }
     };
 })();
-
 

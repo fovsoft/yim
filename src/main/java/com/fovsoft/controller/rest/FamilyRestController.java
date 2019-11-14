@@ -5,6 +5,7 @@ import com.fovsoft.common.JsonResult;
 import com.fovsoft.entity.YmFamilyBase;
 import com.fovsoft.entity.YmFamilyBaseAddition;
 import com.fovsoft.entity.YmFamilyBaseCondition;
+import com.fovsoft.entity.YmFamilyBaseMember;
 import com.fovsoft.service.FamilySerivce;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -79,8 +80,14 @@ public class FamilyRestController {
     }
 
     @RequestMapping(value = "/getMemberList",  produces = "application/json;charset=UTF-8")
-    public JsonResult getFamilyMember() {
+    public JsonResult getMemberList() {
 
         return new JsonResult();
+    }
+
+    @RequestMapping(value = "/addMember", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    public JsonResult addMember(@RequestBody YmFamilyBaseMember ymFamilyBaseMember) {
+        int id = familySerivce.addOrUpdateFamilyBaseMember(ymFamilyBaseMember);
+        return new JsonResult(Integer.valueOf(id));
     }
 }
