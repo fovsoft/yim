@@ -2,21 +2,21 @@ package com.fovsoft.controller.rest;
 
 import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.fovsoft.common.JsonResult;
-import com.fovsoft.entity.YmFamilyBase;
-import com.fovsoft.entity.YmFamilyBaseAddition;
-import com.fovsoft.entity.YmFamilyBaseCondition;
-import com.fovsoft.entity.YmFamilyBaseMember;
+import com.fovsoft.entity.*;
 import com.fovsoft.service.FamilySerivce;
 import com.github.pagehelper.PageInfo;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.apache.tomcat.util.buf.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -45,6 +45,19 @@ public class FamilyRestController {
         return new JsonResult(Integer.valueOf(id));
     }
 
+    @RequestMapping(value = "/del", method = RequestMethod.GET)
+    public JsonResult del(Integer id) {
+        int returnId = familySerivce.del(id);
+
+        return new JsonResult(Integer.valueOf(returnId));
+    }
+
+    @RequestMapping(value = "/get", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+    public JsonResult get(Integer id) {
+        YmFamilyBase ymFamilyBase = familySerivce.get(id);
+        return new JsonResult(ymFamilyBase);
+    }
+
 
     /**
      *
@@ -69,14 +82,52 @@ public class FamilyRestController {
     }
 
     @RequestMapping(value = "/getMemberList",  produces = "application/json;charset=UTF-8")
-    public JsonResult getMemberList() {
+    public JsonResult getMemberList(Integer fid) {
+        List<YmFamilyBaseMember> list = familySerivce.getMemberList(fid);
 
-        return new JsonResult();
+        return new JsonResult(list);
     }
 
     @RequestMapping(value = "/addMember", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     public JsonResult addMember(@RequestBody YmFamilyBaseMember ymFamilyBaseMember) {
         int id = familySerivce.addOrUpdateFamilyBaseMember(ymFamilyBaseMember);
         return new JsonResult(Integer.valueOf(id));
+    }
+
+    @RequestMapping(value = "/delMember", method = RequestMethod.GET)
+    public JsonResult delMember(Integer id) {
+        int returnId = familySerivce.delMember(id);
+        return new JsonResult(Integer.valueOf(returnId));
+    }
+
+    /**
+     * 批量删除
+     *
+     * 多表批量删除，没加事务
+     *
+     * @return
+     */
+    @RequestMapping(value = "/delAll",method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    public JsonResult delAll(@RequestBody ArrayList<Integer> ids) {
+        String inStr = "";
+        for (int i:
+        ids) {
+            inStr += i + ",";
+        }
+        inStr = inStr.substring(0, inStr.length() - 1); logger.info(inStr);
+        familySerivce.delAll(inStr);
+        return new JsonResult();
+    }
+
+    @RequestMapping(value = "/getAddition",  produces = "application/json;charset=UTF-8")
+    public JsonResult getAddiction(Integer fid) {
+        YmFamilyBaseAddition ymFamilyBaseAddition = familySerivce.getAddiction(fid);
+        return new JsonResult(ymFamilyBaseAddition);
+    }
+
+    @RequestMapping(value = "/getCondition",  produces = "application/json;charset=UTF-8")
+    public JsonResult getCondition(Integer fid) {
+        YmFamilyBaseCondition ymFamilyBaseCondition = familySerivce.getCondition(fid);
+        return new JsonResult(ymFamilyBaseCondition);
     }
 }

@@ -20,11 +20,12 @@
 <div>
     <form class="layui-form" style="margin-top: 10px" action="">
         <input name="memberid" type="hidden" id="memberid" />
+        <input name="fid" class="fid" type="hidden" id="fid" />
         <div class="layui-form-item">
             <div class="layui-inline">
                 <label class="layui-form-label" style="">姓名</label>
                 <div class="layui-input-inline" style="">
-                    <input id="member_name" name="member_name" class="layui-input" style=""/>
+                    <input id="member_name" name="member_name" class="layui-input member_name" style=""/>
                 </div>
             </div>
             <div class="layui-inline">
@@ -252,5 +253,8 @@
 
 </body>
 <script type="text/javascript">
+    function child(obj){
+        console.log(obj);//获取父界面的传值
+    }
 </script>
 </html>

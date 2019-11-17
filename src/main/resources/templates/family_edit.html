@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="/assets/layui/dist/css/layui.css" media="all">
     <script src="/assets/js/jquery-1.11.3.min.js"></script>
     <script src="/assets/layui/dist/layui.js" charset="utf-8"></script>
-    <script src="/assets/ym/family_add.js"></script>
+
 </head>
 <style type="text/css">
     .layui-table-cell {
@@ -40,8 +40,8 @@
     <div class="layui-tab-content" style="height: 100%;">
         <!-- 基本信息 -->
         <div class="layui-tab-item layui-show">
-            <form class="layui-form">
-                <input type="hidden" name="baseid" id="baseid">
+            <form class="layui-form" lay-filter="form1">
+                <input type="hidden" name="baseid" id="baseid" lay-filter="baseid">
                 <div class="layui-form-item">
                     <div class="layui-inline">
                         <label class="layui-form-label">家庭住址:</label>
@@ -81,7 +81,7 @@
                             <div class="layui-input-inline">
                                 <input type="avillage" name="avillage" lay-verify="required" autocomplete="off"
                                        value="测试行政村"
-                                       class="layui-input">
+                                       class="layui-input" lay-filter="avillage"/>
                             </div>
                         </div>
                         <div class="layui-form-mid layui-word-aux">村</div>
@@ -93,7 +93,7 @@
                             <div class="layui-input-inline">
                                 <input type="nvillage" name="nvillage" lay-verify="required" autocomplete="off"
                                        value="测试自然村屯"
-                                       class="layui-input">
+                                       class="layui-input" lay-filter="nvillage"/>
                             </div>
                         </div>
                         <div class="layui-form-mid layui-word-aux">自然村（屯）</div>
@@ -108,21 +108,21 @@
                         <div class="layui-input-inline">
                             <input type="tel" name="tel" id="tel" lay-verify="required|phone" autocomplete="off"
                                    value="13222221111"
-                                   class="layui-input">
+                                   class="layui-input" lay-filter="tel">
                         </div>
                     </div>
                     <div class="layui-inline">
                         <label class="layui-form-label">开户银行：</label>
                         <div class="layui-input-inline">
                             <input type="text" name="dpst_bk" id="dpst_bk" autocomplete="off" class="layui-input"
-                                   placeholder="（选填）">
+                                   placeholder="（选填）" lay-filter="dpst_bk">
                         </div>
                     </div>
                     <div class="layui-inline">
                         <label class="layui-form-label">银行卡号：</label>
                         <div class="layui-input-inline" style="width:260px;">
                             <input type="text" name="bk_num" id="bk_num" autocomplete="off" class="layui-input"
-                                   placeholder="（选填）">
+                                   placeholder="（选填）" lay-filter="bk_num">
                         </div>
                     </div>
                 </div>
@@ -135,7 +135,7 @@
                         <div class="layui-input-inline">
                             <!--<input type="text" name="pkhsx" lay-verify="required" autocomplete="off"-->
                             <!--class="layui-input">-->
-                            <select name="family_attr" id="family_attr" lay-verify="required" style="width: 20px">
+                            <select name="family_attr" id="family_attr" lay-verify="required" lay-filter="family_attr" style="width: 20px">
                                 <option value="1">一般贫困户</option>
                                 <option value="2">低保贫困户</option>
                                 <option value="3">特困供养贫困户</option>
@@ -148,7 +148,7 @@
                         <div class="layui-input-inline">
                             <input id="poverty_relief_tm" type="text" name="poverty_relief_tm" lay-verify="required"
                                    autocomplete="off" value="2020"
-                                   class="layui-input" placeholder="yyyy">
+                                   class="layui-input" placeholder="yyyy" lay-filter="poverty_relief_tm">
                         </div>
                     </div>
                     <div class="layui-inline">
@@ -156,7 +156,7 @@
                         <div class="layui-input-inline">
                             <input id="poverty_rtn_tm" type="text" name="poverty_rtn_tm" lay-verify="required"
                                    autocomplete="off" value="2018"
-                                   class="layui-input" placeholder="yyyy">
+                                   class="layui-input" placeholder="yyyy" lay-filter="poverty_rtn_tm">
                         </div>
                     </div>
 
@@ -170,14 +170,14 @@
                             <div class="layui-input-inline">
                                 <input type="text" id="poverty_rtn_rsn" name="poverty_rtn_rsn" lay-verify="required"
                                        autocomplete="off" value="因学"
-                                       class="layui-input">
+                                       class="layui-input" lay-filter="poverty_rtn_rsn">
                             </div>
                         </div>
                     </div>
                     <div class="layui-inline">
                         <label class="layui-form-label" style="width: auto">是否军烈属：</label>
                         <div class="layui-input-inline">
-                            <select name="is_martyrsfamily" id="is_martyrsfamily" lay-verify="required">
+                            <select name="is_martyrsfamily" id="is_martyrsfamily" lay-verify="required" lay-filter="is_martyrsfamily">
                                 <option value="0">否</option>
                                 <option value="1">是</option>
                             </select>
@@ -190,7 +190,7 @@
                     <div class="layui-inline">
                         <label class="layui-form-label" style="width: auto">是否易地扶贫搬迁户：</label>
                         <div class="layui-input-inline">
-                            <select name="is_relocated" id="is_relocated" lay-verify="required" autocomplete="off">
+                            <select name="is_relocated" id="is_relocated" lay-verify="required" autocomplete="off" lay-filter="is_relocated">
                                 <option value="1">是</option>
                                 <option value="0">否</option>
                             </select>
@@ -201,7 +201,7 @@
                         <div class="layui-input-inline">
                             <input type="text" id="relocated_way" name="relocated_way" lay-verify="required"
                                    autocomplete="off"
-                                   class="layui-input" value="测试搬迁方式"/>
+                                   class="layui-input" value="测试搬迁方式" lay-filter="relocated_way"/>
                         </div>
                     </div>
                 </div>
@@ -210,7 +210,7 @@
                     <div class="layui-input-block">
                         <input type="text" id="relocated_addr" name="relocated_addr" lay-verify="required"
                                placeholder="" autocomplete="off"
-                               class="layui-input" value="测试搬迁地址"/>
+                               class="layui-input" value="测试搬迁地址" lay-filter="relocated_addr"/>
                     </div>
                 </div>
 
@@ -224,12 +224,12 @@
         </div>
         <!-- 家庭成员 -->
         <div class="layui-tab-item">
-            <table id="tableMember" lay-filter="tableMember"></table>
+            <table class="layui-table-cell" id="tableMember" lay-filter="tableMember"></table>
         </div>
         <!-- 致贫原因及家庭人口情况 -->
         <div class="layui-tab-item">
-            <form class="layui-form">
-                <input type="hidden" name="additionid" id="additionid"/>
+            <form class="layui-form" lay-filter="form3">
+                <input type="hidden" name="additionid" id="additionid" lay-filter="additionid"/>
                 <div class="layui-form-item">
                     <div class="layui-inline">
                         <label class="layui-form-label" style="width: 120px">致贫原因1<span
@@ -306,14 +306,14 @@
                     <div class="layui-inline">
                         <label class="layui-form-label" style="width: 120px">年初家庭人口数</label>
                         <div class="layui-input-inline">
-                            <input id="household_num_Jan" name="household_num_Jan" class="layui-input"/>
+                            <input id="household_num_Jan" name="household_num_Jan" class="layui-input" lay-filter="household_num_Jan"/>
                         </div>
                     </div>
 
                     <div class="layui-inline">
                         <label class="layui-form-label" style="width: 120px">年底家庭人口数</label>
                         <div class="layui-input-inline">
-                            <input id="household_num_Dec" name="household_num_Dec" class="layui-input"/>
+                            <input id="household_num_Dec" name="household_num_Dec" class="layui-input" lay-filter="household_num_Dec"/>
                         </div>
                     </div>
                 </div>
@@ -327,8 +327,8 @@
         </div>
         <!-- 生产生活条件 -->
         <div class="layui-tab-item">
-            <form class="layui-form">
-                <input type="hidden" name="conditionid" id="conditionid"/>
+            <form class="layui-form" lay-filter="form4">
+                <input type="hidden" name="conditionid" id="conditionid" lay-filter="conditionid"/>
                 <div class="layui-form-item">
                     <div class="layui-inline">
                         <label class="layui-form-label" style="width: 140px">耕地面积（亩）</label>
@@ -500,7 +500,7 @@
                         <label id="label_type_fuel_other" class="layui-form-label"
                                style="width: 140px; color: gainsboro">具体燃料名称</label>
                         <div class="layui-input-inline" style="width: 160px">
-                            <input id="type_fuel_other" name="type_fuel_other" autocomplete="off"
+                            <input id="type_fuel_other" name="type_fuel_other" autocomplete="off" lay-filter="type_fuel_other"
                                    class="layui-input layui-disabled" disabled="" style="width: 160px"/>
                         </div>
                     </div>
@@ -514,7 +514,7 @@
             </form>
         </div>
         <div class="layui-tab-item">
-            <form class="layui-form">
+            <form class="layui-form" lay-filter="form5">
                 <input type="hidden" name="changeid" id="changeid"/>
                 <div class="layui-form-item layui-form-text">
                     <label class="layui-form-label">变更情况说明</label>
@@ -534,11 +534,93 @@
     </div>
 </div>
 </body>
+<script type="text/javascript">
+    // 赋值函数供父页面调用
+    function setBaseId(id) {
+        $("#baseid").val(id);
+        layui.use(['form'], function(){
+            let form = layui.form;
+            $.ajax({
+                url : '/family/get',
+                data : {id : id},
+                async : false,
+                success : function(res) {
+                    let resData = res.data;
+                    // console.log(resData);
+                    $.ajax({
+                        url : "/getRegion",
+                        async : false,
+                        dataType: 'JSON',
+                        success : function (data) {
+                            $.each(data, function (index, item) {
+                                $("#city").append(new Option(item.name, item.id));
+                            });
+                            // form.render('select');
+                        }
+                    });
+
+                    $.ajax({
+                        url : "/getRegion",
+                        async : false,
+                        dataType: 'JSON',
+                        data : {id : resData.city},
+                        success : function (data) {
+                            $.each(data, function (index, item) {
+                                $("#county").append(new Option(item.name, item.id));
+                            });
+                            // form.render('select');
+                        }
+                    });
+
+                    $.ajax({
+                        url : "/getRegion",
+                        async : false,
+                        dataType: 'JSON',
+                        data : {id : resData.county},
+                        success : function (data) {
+                            $.each(data, function (index, item) {
+                                $("#town").append(new Option(item.name, item.id));
+                            });
+                            // form.render('select');
+                        }
+                    });
+
+                    form.val('form1', {
+                        'city' : resData.city,
+                        'county' : resData.county,
+                        'town' : resData.town,
+                        'avillage' : resData.avillage,
+                        'nvillage' : resData.nvillage,
+                        'tel' : resData.tel,
+                        'dpst_bk' : resData.dpst_bk,
+                        'bk_num' : resData.bk_num,
+                        'family_attr' : resData.family_attr,
+                        'poverty_relief_tm' : resData.poverty_relief_tm,
+                        'poverty_rtn_tm' : resData.poverty_rtn_tm,
+                        'poverty_rtn_rsn' : resData.poverty_rtn_rsn,
+                        'is_martyrsfamily' : resData.is_martyrsfamily,
+                        'is_relocated' : resData.is_relocated,
+                        'relocated_way' : resData.relocated_way,
+                        'relocated_addr' : resData.relocated_addr
+                    });
+
+                    form.render();
+                }
+            });
+
+
+
+
+
+        });
+
+    }
+</script>
 
 <script type="text/html" id="tableMemberToolbar">
     <div class="layui-btn-container">
         <button class="layui-btn layui-btn-normal layui-btn-sm" lay-event="add">新增家庭成员</button>
-        <!--<button class="layui-btn layui-btn-danger layui-btn-sm" lay-event="del">删除家庭成员</button>-->
+        <button class="layui-btn layui-btn-danger layui-btn-sm" lay-event="del">删除家庭成员</button>
     </div>
 </script>
 
@@ -546,9 +628,5 @@
     <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
     <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 </script>
-<script type="text/javascript">
-    var getBaseID = function() {
-        return $("#baseid").val();
-    }
-</script>
+<script src="/assets/ym/family_edit.js"></script>
 </html>

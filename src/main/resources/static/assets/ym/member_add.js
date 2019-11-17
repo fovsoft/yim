@@ -2,8 +2,6 @@ $(document).ready(function () {
     member_add.onload();
 });
 let member_add = (function () {
-
-
     layui.use(['form'], function () {
 
         let form = layui.form;
@@ -11,10 +9,10 @@ let member_add = (function () {
         layui.form.render('select');
 
         // 提交
-        form.on('submit(member)', function(data) {
-            data.field.fid = $("#baseid").val();
+        form.on('submit(member)', function (data) {
+            data.field.fid = $("#fid").val();
             $.ajax({
-                url: '/family/addMember22',
+                url: '/family/addMember',
                 method: 'post',
                 data: JSON.stringify(data.field),
                 contentType: "application/json",
@@ -25,7 +23,10 @@ let member_add = (function () {
                 success: function (res) {
                     if (res.code = '0') {
                         $("#memberid").val(res.data);
-                        layer.msg("✔ 保存成功!");
+                        layer.msg("✔ 保存成功!", {shift: -1, time: 2000}, function () {
+                            var index = parent.layer.getFrameIndex(window.name);
+                            parent.layer.close(index);
+                        });
                     }
                     else {
                         layer.msg("× 保存失败");
@@ -44,9 +45,4 @@ let member_add = (function () {
         }
     };
 })();
-var index;
-console.log(index = parent.layer.getFrameIndex(window.name));
-
-var iframe = window[parent.layer.find('iframe')[0]['name']]
-console.log(iframe.getBaseID());
 

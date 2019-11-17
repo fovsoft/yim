@@ -12,8 +12,6 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.sql.Timestamp;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -44,6 +42,19 @@ public class FamilySerivce {
     }
 
     /**
+     *
+     * @param id
+     * @return
+     */
+    public int del(Integer id) {
+        return ymFamilyBaseDao.delete(id);
+    }
+
+    public int delMember(Integer id) {
+        return ymFamilyBaseMemberDao.delete(id);
+    }
+
+    /**
      * 新增或更新家庭基本信息表
      *
      * @param ymFamilyBase
@@ -59,8 +70,15 @@ public class FamilySerivce {
         }
         else {
             // 更新
+            ymFamilyBase.setUpdateTime(new Timestamp(new Date().getTime()));
+            ymFamilyBaseDao.update(ymFamilyBase);
+            id = ymFamilyBase.getId();
         }
         return id;
+    }
+
+    public YmFamilyBase get(int id) {
+        return ymFamilyBaseDao.get(id);
     }
 
     /**
@@ -115,5 +133,23 @@ public class FamilySerivce {
             id = ymFamilyBaseMember.getId();
         }
         return id;
+    }
+
+    public List<YmFamilyBaseMember> getMemberList(Integer fid) {
+        List<YmFamilyBaseMember> list =  ymFamilyBaseMemberDao.list(fid);
+        return list;
+    }
+
+    public int delAll(String inStr) {
+        int affectRows = ymFamilyBaseDao.delAll(inStr);
+        return affectRows;
+     }
+
+     public YmFamilyBaseAddition getAddiction(Integer fid) {
+        return ymFamilyBaseAdditionDao.get(fid);
+     }
+
+    public YmFamilyBaseCondition getCondition(Integer fid) {
+        return ymFamilyBaseConditionDao.get(fid);
     }
 }

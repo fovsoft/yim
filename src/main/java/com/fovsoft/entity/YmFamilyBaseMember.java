@@ -63,27 +63,6 @@ public class YmFamilyBaseMember{
 	private int accidentInsurance;
 	private String tel;
 
-//	private int id;
-//	private int fid;
-//	private String memberName;
-//	private int sex;
-//	private String idNum;
-//	private int relation;
-//	private int nation;
-//	private int politicalExp;
-//	private int levelEdu;
-//	private int schoolStatus;
-//	private int stopeduRsn;
-//	private int healthyStatus;
-//	private int laborSkill;
-//	private int canMandarin;
-//	private int medicalInsurance;
-//	private int businessInsurance;
-//	private int basicAllowances;
-//	private int endowmentInsurance;
-//	private int accidentInsurance;
-//	private String tel;
-
 	public void setId(int id){
 		this.id=id;
 	}

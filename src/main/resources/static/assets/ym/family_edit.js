@@ -3,6 +3,11 @@ $(document).ready(function () {
 });
 let family_add = (function () {
 
+    // 首次更新标志
+    let initTab1 = 0;
+    let initTab2 = 0;
+    let initTab3 = 0;
+
     layui.use(['form', 'element', 'laydate', 'table'], function () {
         var element, laydate, form, table;
         element = layui.element;
@@ -12,25 +17,6 @@ let family_add = (function () {
 
 
         var poverty_causes1_value, poverty_causes2_value, poverty_causes3_value;
-
-        // 提交限制
-        element.on('tab(addBaseInfo)', function (data) {
-
-            if (!$("#baseid").val() && data.index != 0) {
-                layer.open('请先保存基本信息', {btn: ['确定']}, function () {
-                    console.log('123');
-                });
-                layer.open({
-                    title: '提示',
-                    skin: 'layui-layer-lan',
-                    content: '请先提交基本信息', btn: ['确定'],
-                    end: function (index, layero) {
-                        element.tabChange('addBaseInfo', '1');
-                    }
-                });
-            }
-        });
-
 
         laydate.render({
             elem: '#poverty_relief_tm',
@@ -45,12 +31,12 @@ let family_add = (function () {
         });
 
         // 加载js初始化市的下拉框，待优化
-        $.get("/getRegion", function (data) {
-            $.each(data, function (index, item) {
-                $("#city").append(new Option(item.name, item.id));
-            });
-            layui.form.render('select');
-        });
+        // $.get("/getRegion", function (data) {
+        //     $.each(data, function (index, item) {
+        //         $("#city").append(new Option(item.name, item.id));
+        //     });
+        //     layui.form.render('select');
+        // });
 
         /* ***** 表单提交开始 **** */
 
@@ -85,6 +71,7 @@ let family_add = (function () {
         // 致贫原因及家庭人口情况
         form.on('submit(base3)', function (data) {
             data.field.fid = $("#baseid").val();
+            data.field.id = $("#additionid").val();
             $.ajax({
                 url: '/family/addAddition',
                 method: 'post',
@@ -113,6 +100,7 @@ let family_add = (function () {
         // 生产生活条件表单
         form.on('submit(base4)', function (data) {
             data.field.fid = $("#baseid").val();
+            data.field.id = $("#conditionid").val();
             $.ajax({
                 url: '/family/addCondition',
                 method: 'post',
@@ -138,6 +126,96 @@ let family_add = (function () {
         });
         /* ***** 表单提交结束 **** */
 
+        /* ***** tab切换事件开始 **** */
+        element.on('tab(addBaseInfo)', function(data){
+            let fid = $("#baseid").val();
+            // 家庭成员
+            if(data.index == 1) {
+                if(initTab1 == 0) {
+                    layui.table.reload('tableMember', {
+                        where: {
+                            fid: fid
+                        }
+                    });
+                    initTab1 = 1;
+                }
+            }
+            // 致贫原因
+            if(data.index == 2) {
+                if(initTab2 == 0) {
+                    $.ajax({
+                        url : '/family/getAddition',
+                        data : {fid : fid},
+                        dataType: 'JSON',
+                        success : function(res) {
+                            // console.log(res.data);
+                            form.val('form3', {
+                                'additionid' : res.data.additionid,
+                                'poverty_causes1' : res.data.poverty_causes1,
+                                'poverty_causes2' : res.data.poverty_causes2,
+                                'poverty_causes3' : res.data.poverty_causes3,
+                                'household_num_Jan' : res.data.household_num_Jan,
+                                'household_num_Dec' : res.data.household_num_Dec
+                            });
+                            form.render();
+                        }
+                    });
+                    initTab2 = 1;
+                }
+            }
+            // 生产生活条件
+            if(data.index == 3) {
+                if(initTab3 == 0) {
+                    $.ajax({
+                        url : '/family/getCondition',
+                        data : {fid : fid},
+                        dataType: 'JSON',
+                        success : function(res) {
+                            console.log(res);
+                            // 单独处理燃料的其他项
+                            if(res.data.type_fuel == 5) {
+                                $("#label_type_fuel_other").css("color", '');
+                                $("#type_fuel_other").removeClass("layui-disabled");
+                                $("#type_fuel_other").attr("disabled", false);
+                                $("#type_fuel_other").attr("lay-verify", "required");
+                            }
+                            form.val('form4', {
+                                'conditionid' : res.data.conditionid,
+                                'area_cultivated' : res.data.area_cultivated,
+                                'area_woodland' : res.data.area_woodland,
+                                'area_turninto' : res.data.area_turninto,
+                                'area_fruit' : res.data.area_fruit,
+                                'area_foragegrass' : res.data.area_foragegrass,
+                                'area_waters' : res.data.area_waters,
+                                'is_cooperative' : res.data.is_cooperative,
+                                'get_leaded' : res.data.get_leaded,
+                                'get_pioneer' : res.data.get_pioneer,
+                                'get_electric' : res.data.get_electric,
+                                'get_television' : res.data.get_television,
+                                'get_potablewater' : res.data.get_potablewater,
+                                'get_toilet' : res.data.get_toilet,
+                                'distance_mainroad' : res.data.distance_mainroad,
+                                'type_road' : res.data.type_road,
+                                'area_housing' : res.data.area_housing,
+                                'is_dilapidated' : res.data.is_dilapidated,
+                                'level_dilapidated' : res.data.level_dilapidated,
+                                'year_reform' : res.data.year_reform,
+                                'type_fuel' : res.data.type_fuel,
+                                'type_fuel_other' : res.data.type_fuel_other,
+                            });
+                            form.render();
+                        }
+                    });
+                    initTab3 = 1;
+                }
+            }
+
+            // console.log(this); //当前Tab标题所在的原始DOM元素
+            // console.log(data.index); //得到当前Tab的所在下标
+            // console.log(data.elem); //得到当前的Tab大容器
+            // console.log($("#"))
+        });
+        /* ***** tab切换事件结束 **** */
 
         form.on('select(city)', function (data) {
             $.get("/getRegion", {id: data.value}, function (data) {
@@ -249,16 +327,17 @@ let family_add = (function () {
          * 家庭成员列表
          */
         table.render({
-            elem: '#tableMember',
-            url: '/family/getMemberList',
-            page: false,
-            toolbar: '#tableMemberToolbar',
-            limits: [10, 15, 20, 25],
-            limit: 10,
-            even: true,
-            title: '家庭成员表',
-            cols: [[
-                 {field: 'memberid', title: 'ID'}
+            elem: '#tableMember'
+            , url: '/family/getMemberList'
+            , toolbar: '#tableMemberToolbar' //开启头部工具栏，并为其绑定左侧模板
+            , defaultToolbar: ['filter', 'exports', 'print', { //自定义头部工具栏右侧图标。如无需自定义，去除该参数即可
+                title: '提示'
+                , layEvent: 'LAYTABLE_TIPS'
+                , icon: 'layui-icon-tips'
+            }]
+            , title: '家庭成员表'
+            , cols: [[
+                {field: 'memberid', title: 'ID'}
                 , {field: 'member_name', title: '姓名',minWidth:100}
                 , {field: 'sex', title: '性别'}
                 , {field: 'id_num', title: '证件号码', minWidth:180}
@@ -279,6 +358,7 @@ let family_add = (function () {
                 , {field: 'tel', title: '联系电话',minWidth:130}
                 , {title: '操作', toolbar: '#tableMemberBar', minWidth:130}
             ]]
+            , page: false
             , done: function (res, curr, count) {
 
                 $("[data-field='sex']").children().each(function () {
@@ -450,10 +530,8 @@ let family_add = (function () {
                         $(this).text("否");
                     }
                 });
-            },
-            skin: 'row'
+            }
         });
-
 
         // 新增家庭成员
         table.on('toolbar(tableMember)', function (obj) {
@@ -507,19 +585,8 @@ let family_add = (function () {
                 layer.msg('ID：' + data.id + ' 的查看操作');
             } else if (obj.event === 'del') {
                 layer.confirm('是否删除该记录？', function (index) {
-                    $.ajax({
-                        url: '/family/delMember',
-                        method: 'get',
-                        data: {id: obj.data.memberid},
-                        contentType: "application/json",
-                        success: function (data) {
-                            obj.del();
-                            layer.close(index);
-                        },
-                        error: function (data) {
-                            layer.msg("删除失败!");
-                        }
-                    });
+                    obj.del();
+                    layer.close(index);
                 });
             } else if (obj.event === 'edit') {
                 layer.alert('编辑行：<br>' + JSON.stringify(data))
@@ -529,7 +596,7 @@ let family_add = (function () {
 
     return {
         onload: function () {
-
+            console.log($("#baseid").val());
         }
     };
 })();

@@ -4,6 +4,7 @@ import com.fovsoft.common.JsonResult;
 import com.fovsoft.service.FamilySerivce;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
@@ -28,5 +29,17 @@ public class FamilyController {
     }
 
     @RequestMapping(value = "/memberAdd")
-    public String memberAdd() {return "member_add";}
+    public String memberAdd() {
+        return "member_add";
+    }
+
+    @RequestMapping(value = "/memberEdit")
+    public String memberEdit() {
+        return "member_edit";
+    }
+
+    @RequestMapping(value = "/edit")
+    public String familyEdit() {
+        return "family_edit";
+    }
 }
