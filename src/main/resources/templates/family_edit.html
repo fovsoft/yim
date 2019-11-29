@@ -136,6 +136,7 @@
                             <!--<input type="text" name="pkhsx" lay-verify="required" autocomplete="off"-->
                             <!--class="layui-input">-->
                             <select name="family_attr" id="family_attr" lay-verify="required" lay-filter="family_attr" style="width: 20px">
+                                <option value=""></option>
                                 <option value="1">一般贫困户</option>
                                 <option value="2">低保贫困户</option>
                                 <option value="3">特困供养贫困户</option>
@@ -372,8 +373,8 @@
                     <div class="layui-inline">
                         <label class="layui-form-label" style="width: 140px">加入农民专业合作社</label>
                         <div id="is_cooperative" class="layui-input-inline" style="width: 60px">
-                            <select name="is_cooperative" class="layui-input" style="width: 60px">
-                                <option value="0">否</option>
+                            <select name="is_cooperative" class="layui-input" style="width: 60px"  lay-verify="required">
+                                <option value="0" selected >否</option>
                                 <option value="1">是</option>
                             </select>
                         </div>
@@ -381,8 +382,8 @@
                     <div class="layui-inline">
                         <label class="layui-form-label" style="width: 140px">有龙头企业带动</label>
                         <div id="get_leaded" class="layui-input-inline" style="width: 60px">
-                            <select name="get_leaded" class="layui-input" style="width: 60px">
-                                <option value="0">否</option>
+                            <select name="get_leaded" class="layui-input" style="width: 60px"  lay-verify="required">
+                                <option value="0" selected>否</option>
                                 <option value="1">是</option>
                             </select>
                         </div>
@@ -391,7 +392,7 @@
                         <label class="layui-form-label" style="width: 140px">致富带头人带动</label>
                         <div id="get_pioneer" class="layui-input-inline" style="width: 60px">
                             <select name="get_pioneer" class="layui-input" style="width: 60px">
-                                <option value="0">否</option>
+                                <option value="0" selected>否</option>
                                 <option value="1">是</option>
                             </select>
                         </div>
@@ -400,7 +401,7 @@
                         <label class="layui-form-label" style="width: 140px">通生活用电</label>
                         <div id="get_electric" class="layui-input-inline" style="width: 60px">
                             <select name="get_electric" class="layui-input" style="width: 60px">
-                                <option value="0">否</option>
+                                <option value="0" selected>否</option>
                                 <option value="1">是</option>
                             </select>
                         </div>
@@ -409,7 +410,7 @@
                         <label class="layui-form-label" style="width: 140px">通广播电视</label>
                         <div id="get_television" class="layui-input-inline" style="width: 60px">
                             <select name="get_television" class="layui-input" style="width: 60px">
-                                <option value="0">否</option>
+                                <option value="0" selected>否</option>
                                 <option value="1">是</option>
                             </select>
                         </div>
@@ -418,7 +419,7 @@
                         <label class="layui-form-label" style="width: 140px">解决安全饮用水</label>
                         <div id="get_potablewater" class="layui-input-inline" style="width: 60px">
                             <select name="get_potablewater" class="layui-input" style="width: 60px">
-                                <option value="0">否</option>
+                                <option value="0" selected>否</option>
                                 <option value="1">是</option>
                             </select>
                         </div>
@@ -427,7 +428,7 @@
                         <label class="layui-form-label" style="width: 140px">有卫生厕所</label>
                         <div id="get_toilet" class="layui-input-inline" style="width: 60px">
                             <select name="get_toilet" class="layui-input" style="width: 60px">
-                                <option value="0">否</option>
+                                <option value="0" selected>否</option>
                                 <option value="1">是</option>
                             </select>
                         </div>
@@ -445,8 +446,8 @@
                         <label class="layui-form-label" style="width: 140px">入户路类型</label>
                         <div id="type_road" class="layui-input-inline" style="width: 100px">
                             <select name="type_road" class="layui-input" style="width: 100px">
-                                <option value="0">请选择</option>
-                                <option value="1">泥土路</option>
+                                <option value=""></option>
+                                <option value="1" selected>泥土路</option>
                                 <option value="2">砂石路</option>
                                 <option value="3">硬化路</option>
                             </select>
@@ -462,7 +463,7 @@
                         <label class="layui-form-label" style="width: 140px">是否危房户</label>
                         <div id="is_dilapidated" class="layui-input-inline" style="width: 60px">
                             <select name="is_dilapidated" class="layui-input" style="width: 60px">
-                                <option value="0">否</option>
+                                <option value="0" selected>否</option>
                                 <option value="1">是</option>
                             </select>
                         </div>
@@ -471,8 +472,10 @@
                         <label class="layui-form-label" style="width: 140px">危房级别</label>
                         <div id="level_dilapidated" class="layui-input-inline" style="width: 60px">
                             <select name="level_dilapidated" class="layui-input" style="width: 60px">
-                                <option value="0">否</option>
-                                <option value="1">是</option>
+                                <option value="1" selected>A级</option>
+                                <option value="2">B级</option>
+                                <option value="3">C级</option>
+                                <option value="4">D级</option>
                             </select>
                         </div>
                     </div>
