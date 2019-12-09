@@ -33,7 +33,7 @@ public class GenEntityMysql {
     private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
     private String packageOutPath = "com.fovsoft.entity";// 指定实体生成所在包的路径
     private String authorName = "ryo";// 作者名字
-    private String[] generateTables = {"ym_region"};//指定需要生成的表的表名，全部生成设置为null
+    private String[] generateTables = {"ym_family_base_member"};//指定需要生成的表的表名，全部生成设置为null
 
     /**
      * 类的构造方法
