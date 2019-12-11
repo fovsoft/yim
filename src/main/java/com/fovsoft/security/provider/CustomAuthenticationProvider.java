@@ -36,9 +36,9 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
         //获取表单中密码
         String password = (String)authentication.getCredentials();
 
-        System.out.println("principal:"+authentication.getPrincipal()+"auth:"+authentication.getAuthorities()+"cred"+authentication.getCredentials());
-        System.out.println("表单提交东西");
-        System.out.println(userName+"  "+password);
+//        System.out.println("principal:"+authentication.getPrincipal()+"auth:"+authentication.getAuthorities()+"cred"+authentication.getCredentials());
+//        System.out.println("表单提交东西");
+//        System.out.println(userName+"  "+password);
 
 
         User user = (User)customUserDetailsService.loadUserByUsername(userName);

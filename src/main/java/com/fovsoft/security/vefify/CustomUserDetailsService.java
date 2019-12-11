@@ -65,7 +65,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 
         System.out.println("数据库取出的用户名为："+sysUser.getUserName());
         //CustomUserDetails customUserDetails = new CustomUserDetails(sysUser);
-        User user = new User(((SysUser) sysUser).getUserName(),sysUser.getPassword(),true,true,true,true,authorities);
+        User user = new User(sysUser.getUserName(),sysUser.getPassword(),true,true,true,true,authorities);
         return user;
     }
 

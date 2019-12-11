@@ -358,13 +358,18 @@
                         </li>
 
                         <li class="divider"></li>
-
+                        <form id="subform" action="/logout" method="post">
+                            <input type="hidden" th:name="${_csrf.parameterName }" th:value="${_csrf.token }"/>
                         <li>
-                            <a href="#">
-                                <i class="ace-icon fa fa-power-off"></i>
-                                Logout
-                            </a>
+
+                                <a href="javascript:;" onclick="document.getElementById('subform').submit();">
+                                    <i class="ace-icon fa fa-power-off"></i>
+                                    退出
+                                </a>
+
                         </li>
+                        </form>
+
                     </ul>
                 </li>
             </ul>
