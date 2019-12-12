@@ -27,12 +27,12 @@ public class LoginController {
         return "error";
     }
 
-//    @RequestMapping(value = "/logout", method = RequestMethod.GET)
-//    public String logout(HttpServletRequest request) {
-//        String sessionId = request.getRequestedSessionId();
-//        sessionRegistry.removeSessionInformation(sessionId);
-//        return "redirect:/login";
-//    }
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    public String logout(HttpServletRequest request) {
+        String sessionId = request.getRequestedSessionId();
+        sessionRegistry.removeSessionInformation(sessionId);
+        return "redirect:/login";
+    }
 
 
 

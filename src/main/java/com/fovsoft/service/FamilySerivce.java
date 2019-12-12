@@ -54,6 +54,10 @@ public class FamilySerivce {
         return ymFamilyBaseMemberDao.delete(id);
     }
 
+    public YmFamilyBaseMember getMember(Integer id) {
+        return ymFamilyBaseMemberDao.get(id);
+    }
+
     /**
      * 新增或更新家庭基本信息表
      *

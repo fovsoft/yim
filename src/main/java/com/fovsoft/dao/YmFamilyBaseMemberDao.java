@@ -31,6 +31,9 @@ public interface YmFamilyBaseMemberDao {
 
     @Delete("DELETE FROM ym_family_base_member WHERE id = #{id}")
     int delete(Integer id);
+
+    @Select("SELECT id,fid,member_name memberName,sex,id_num idNum,relation,nation,political_exp politicalExp,level_edu levelEdu,school_status schoolStatus,stopedu_rsn stopeduRsn,healthy_status healthyStatus,labor_skill laborSkill,can_mandarin canMandarin,medical_insurance medicalInsurance,business_insurance businessInsurance,basic_allowances basicAllowances,endowment_insurance endowmentInsurance,accident_insurance accidentInsurance,tel FROM ym_family_base_member WHERE id = #{id}")
+    YmFamilyBaseMember get(Integer id);
 }
 
 

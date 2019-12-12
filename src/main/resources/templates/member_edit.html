@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="description" content=""/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+    <meta name="_csrf" th:content="${_csrf.token}"/>
+    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+    <!-- layui css -->
+    <link rel="stylesheet" href="/assets/layui/dist/css/layui.css" media="all">
+    <script src="/assets/js/jquery-1.11.3.min.js"></script>
+    <script src="/assets/layui/dist/layui.js" charset="utf-8"></script>
+    <script src="/assets/ym/member_edit.js"></script>
+</head>
+
+<body>
+<!--  -->
+<div>
+    <form class="layui-form" lay-filter="member11" style="margin-top: 10px" action="">
+        <input name="memberid" type="hidden" id="memberid" th:value="${id}" />
+        <input name="fid" type="hidden" id="fid"  />
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label" style="">姓名</label>
+                <div class="layui-input-inline" style="">
+                    <input id="member_name" name="member_name" lay-filter="member_name" class="layui-input member_name" style=""/>
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label" style="">性别</label>
+                <div class="layui-input-inline" style="width: 60px">
+                    <select name="sex" class="layui-input" lay-filter="sex" style="width: 60px">
+                        <option value="1">男</option>
+                        <option value="0">女</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label" style="">证件号码</label>
+                <div class="layui-input-inline" style="">
+                    <input id="id_num" name="id_num" lay-filter="id_num" class="layui-input" style=""/>
+                </div>
+            </div>
+
+            <div class="layui-inline">
+                <label class="layui-form-label">联系电话</label>
+                <div class="layui-input-inline">
+                    <input id="tel" type="avillage" name="tel" lay-filter="tel" lay-verify="required" autocomplete="off"
+                           value=""
+                           class="layui-input"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label" style="">与户主关系</label>
+                <div class="layui-input-inline">
+                    <select id="relation" name="relation" lay-filter="relation" class="layui-input">
+                        <!--<option value="">请选择</option>-->
+                        <option value="1">户主</option>
+                        <option value="2">之子</option>
+                        <option value="3">之女</option>
+                        <option value="4">之配偶</option>
+                        <option value="5">之父</option>
+                        <option value="6">之母</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label" style="">民族</label>
+                <div class="layui-input-inline">
+                    <select id="nation" name="nation" lay-filter="nation" class="layui-input">
+                        <!--<option value="">请选择</option>-->
+                        <option value="1">汉族</option>
+                        <option value="2">壮族</option>
+                        <option value="3">瑶族</option>
+                        <option value="4">水族</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label" style="">政治面貌</label>
+                <div class="layui-input-inline">
+                    <select id="political_exp" name="political_exp" lay-filter="political_exp" class="layui-input">
+                        <!--<option value="">请选择</option>-->
+                        <option value="1">群众</option>
+                        <option value="2">党员</option>
+                        <option value="3">民盟成员</option>
+                        <option value="4">共青团员</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label" style="">文化程度</label>
+                <div class="layui-input-inline">
+                    <select id="level_edu" name="level_edu" lay-filter="level_edu" class="layui-input">
+                        <!--<option value="">请选择</option>-->
+                        <option value="1">文盲</option>
+                        <option value="2">小学</option>
+                        <option value="3">初中</option>
+                        <option value="4">高中</option>
+                        <option value="5">本科</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label" style="">在校生情况</label>
+                <div class="layui-input-inline">
+                    <select id="school_status" name="school_status" lay-filter="school_status" class="layui-input">
+                        <!--<option value="">请选择</option>-->
+                        <option value="1">非在校生</option>
+                        <option value="2">学前教育</option>
+                        <option value="3">小学</option>
+                        <option value="4">七年级</option>
+                        <option value="5">八年级</option>
+                        <option value="6">九年级</option>
+                        <option value="7">高一</option>
+                        <option value="8">高二</option>
+                        <option value="9">高三</option>
+                        <option value="10">中职一</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label" style="">失辍学原因</label>
+                <div class="layui-input-inline">
+                    <select id="stopedu_rsn" name="stopedu_rsn" lay-filter="stopedu_rsn" class="layui-input">
+                        <!--<option value="">请选择</option>-->
+                        <option value="1">因病</option>
+                        <option value="2">因疾</option>
+                        <option value="3">厌学</option>
+                        <option value="4">其他</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label" style="">健康状况</label>
+                <div class="layui-input-inline">
+                    <select id="healthy_status" name="healthy_status" lay-filter="healthy_status" class="layui-input">
+                        <!--<option value="">请选择</option>-->
+                        <option value="1">健康</option>
+                        <option value="2">残疾</option>
+                        <option value="3">大病</option>
+                        <option value="4">长期慢性病</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label" style="">劳动技能</label>
+                <div class="layui-input-inline">
+                    <select id="labor_skill" name="labor_skill" lay-filter="labor_skill" class="layui-input">
+                        <!--<option value="">请选择</option>-->
+                        <option value="1">普通劳动力</option>
+                        <option value="2">技能劳动力</option>
+                        <option value="3">弱劳动力或半劳动力</option>
+                        <option value="4">丧失劳动力</option>
+                        <option value="5">无劳动力</option>
+                    </select>
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label" style="">会讲普通话</label>
+                <div class="layui-input-inline">
+                    <select id="can_mandarin" name="can_mandarin" lay-filter="can_mandarin" class="layui-input">
+                        <!--<option value="">请选择</option>-->
+                        <option value="1">是</option>
+                        <option value="0">否</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">是否参加城乡居民基本医疗保险</label>
+                <div class="layui-input-inline">
+                    <select id="medical_insurance" name="medical_insurance" lay-filter="medical_insurance" class="layui-input">
+                        <!--<option value="">请选择</option>-->
+                        <option value="1">是</option>
+                        <option value="0">否</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="layui-inline">
+                <label class="layui-form-label">是否参加商业补充医疗保险</label>
+                <div class="layui-input-inline">
+                    <select id="business_insurance" name="business_insurance" lay-filter="business_insurance" class="layui-input">
+                        <!--<option value="">请选择</option>-->
+                        <option value="1">是</option>
+                        <option value="0">否</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="layui-inline">
+                <label class="layui-form-label">是否享受农村居民最低生活保障</label>
+                <div class="layui-input-inline">
+                    <select id="basic_allowances" name="basic_allowances" lay-filter="basic_allowances" class="layui-input">
+                        <!--<option value="">请选择</option>-->
+                        <option value="1">是</option>
+                        <option value="0">否</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">是否参加城乡居民基本养老保险</label>
+                <div class="layui-input-inline">
+                    <select id="endowment_insurance" name="endowment_insurance" lay-filter="endowment_insurance" class="layui-input">
+                        <!--<option value="">请选择</option>-->
+                        <option value="1">是</option>
+                        <option value="0">否</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="layui-inline">
+                <label class="layui-form-label">是否享受人身意外保险补贴</label>
+                <div class="layui-input-inline">
+                    <select id="accident_insurance" name="accident_insurance" lay-filter="accident_insurance" class="layui-input">
+                        <!--<option value="">请选择</option>-->
+                        <option value="1">是</option>
+                        <option value="0">否</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button type="button" class="layui-btn" lay-submit lay-filter="member">提交</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+</body>
+<script type="text/javascript">
+    function child(obj){
+        console.log(obj);//获取父界面的传值
+    }
+</script>
+</html>

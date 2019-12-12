@@ -88,8 +88,20 @@ public class FamilyRestController {
         return new JsonResult(list);
     }
 
+    @RequestMapping(value = "/getMember", produces = "application/json;charset=UTF-8")
+    public JsonResult getMember(Integer id) {
+        YmFamilyBaseMember member = familySerivce.getMember(id);
+        return new JsonResult(member);
+    }
+
     @RequestMapping(value = "/addMember", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     public JsonResult addMember(@RequestBody YmFamilyBaseMember ymFamilyBaseMember) {
+        int id = familySerivce.addOrUpdateFamilyBaseMember(ymFamilyBaseMember);
+        return new JsonResult(Integer.valueOf(id));
+    }
+
+    @RequestMapping(value = "/updateMember", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    public JsonResult updateMember(@RequestBody YmFamilyBaseMember ymFamilyBaseMember) {
         int id = familySerivce.addOrUpdateFamilyBaseMember(ymFamilyBaseMember);
         return new JsonResult(Integer.valueOf(id));
     }

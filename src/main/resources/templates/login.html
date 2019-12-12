@@ -283,7 +283,17 @@
 				$('.widget-box.visible').removeClass('visible');//hide others
 				$(target).addClass('visible');//show target
 			 });
+
+                $(document).on('keyup', function (e) {
+                    var theEvent = window.event || e;
+                    var code = theEvent.keyCode || theEvent.which;
+                    if (code == 13) {
+                        $("button[type='submit']").click();
+                    }
+                });
 			});
+
+
 			
 			
 			

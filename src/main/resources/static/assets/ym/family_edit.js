@@ -589,7 +589,20 @@ let family_add = (function () {
                     layer.close(index);
                 });
             } else if (obj.event === 'edit') {
-                layer.alert('编辑行：<br>' + JSON.stringify(data))
+                layer.open({
+                    title: '编辑贫困户家庭基本信息',
+                    type: 2,
+                    skin: 'layui-layer-rim', //加上边框
+                    area: ['70%', '60%'], //宽高
+                    content: '/memberEdit?id=' + data.memberid,
+                    end: function () {
+                        layui.table.reload('tableMember', {
+                            where: {
+                                fid: $("#baseid").val()
+                            }
+                        });
+                    }
+                });
             }
         });
     });
