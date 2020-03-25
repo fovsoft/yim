@@ -228,4 +228,11 @@ public class IncomeSerivce {
     public List<YmIncome5> getIncome9(int fid) {
         return ymIncomeIncomeDao.listIncome9(fid);
     }
+
+
+    // 家庭稳定总收入
+    public Map getJTWDZSR(int fid) {
+        Map<String,Float> result = ymIncomeIncomeDao.getJTWDZSR(fid);
+        return result;
+    }
 }

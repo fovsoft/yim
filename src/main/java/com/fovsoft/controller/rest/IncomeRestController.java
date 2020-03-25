@@ -90,9 +90,15 @@ public class IncomeRestController {
                 data.put(item.getType1() + "_" + item.getType2() + "_201810", item.getNy201810());
                 data.put(item.getType1() + "_" + item.getType2() + "_201811", item.getNy201811());
                 data.put(item.getType1() + "_" + item.getType2() + "_201812", item.getNy201812());
-                data.put(item.getType1() + "_" + item.getType2() + "_201913", item.getNy201913());
-                data.put(item.getType1() + "_" + item.getType2() + "_201946", item.getNy201946());
-                data.put(item.getType1() + "_" + item.getType2() + "_201979", item.getNy201979());
+                data.put(item.getType1() + "_" + item.getType2() + "_201901", item.getNy201901());
+                data.put(item.getType1() + "_" + item.getType2() + "_201902", item.getNy201902());
+                data.put(item.getType1() + "_" + item.getType2() + "_201903", item.getNy201903());
+                data.put(item.getType1() + "_" + item.getType2() + "_201904", item.getNy201904());
+                data.put(item.getType1() + "_" + item.getType2() + "_201905", item.getNy201905());
+                data.put(item.getType1() + "_" + item.getType2() + "_201906", item.getNy201906());
+                data.put(item.getType1() + "_" + item.getType2() + "_201907", item.getNy201907());
+                data.put(item.getType1() + "_" + item.getType2() + "_201908", item.getNy201908());
+                data.put(item.getType1() + "_" + item.getType2() + "_201909", item.getNy201909());
                 data.put(item.getType1() + "_" + item.getType2() + "_201910", item.getNy201910());
                 data.put(item.getType1() + "_" + item.getType2() + "_201911", item.getNy201911());
                 data.put(item.getType1() + "_" + item.getType2() + "_201912", item.getNy201912());
@@ -101,9 +107,15 @@ public class IncomeRestController {
                 data.put(item.getType1() + "_201810", item.getNy201810());
                 data.put(item.getType1() + "_201811", item.getNy201811());
                 data.put(item.getType1() + "_201812", item.getNy201812());
-                data.put(item.getType1() + "_201913", item.getNy201913());
-                data.put(item.getType1() + "_201946", item.getNy201946());
-                data.put(item.getType1() + "_201979", item.getNy201979());
+                data.put(item.getType1() + "_201901", item.getNy201901());
+                data.put(item.getType1() + "_201902", item.getNy201902());
+                data.put(item.getType1() + "_201903", item.getNy201903());
+                data.put(item.getType1() + "_201904", item.getNy201904());
+                data.put(item.getType1() + "_201905", item.getNy201905());
+                data.put(item.getType1() + "_201906", item.getNy201906());
+                data.put(item.getType1() + "_201907", item.getNy201907());
+                data.put(item.getType1() + "_201908", item.getNy201908());
+                data.put(item.getType1() + "_201909", item.getNy201909());
                 data.put(item.getType1() + "_201910", item.getNy201910());
                 data.put(item.getType1() + "_201911", item.getNy201911());
                 data.put(item.getType1() + "_201912", item.getNy201912());
@@ -114,21 +126,40 @@ public class IncomeRestController {
 
     @RequestMapping(value = "/getIncome5")
     public JsonResult getIncome5(Integer fid) {
-        Map data = new HashMap();
+        Map result = new HashMap();
+        Map jeMap = new HashMap();
         List<YmIncome5> income5List = incomeSerivce.getIncome5(fid);
         for (YmIncome5 item:
                 income5List) {
-                data.put("5_" + item.getType1() + "_201810", item.getNy201810());
-                data.put("5_" + item.getType1() + "_201811", item.getNy201811());
-                data.put("5_" + item.getType1() + "_201812", item.getNy201812());
-                data.put("5_" + item.getType1() + "_201913", item.getNy201913());
-                data.put("5_" + item.getType1() + "_201946", item.getNy201946());
-                data.put("5_" + item.getType1() + "_201979", item.getNy201979());
-                data.put("5_" + item.getType1() + "_201910", item.getNy201910());
-                data.put("5_" + item.getType1() + "_201911", item.getNy201911());
-                data.put("5_" + item.getType1() + "_201912", item.getNy201912());
+                jeMap.put("5_" + item.getType() + "_201810", item.getNy201810());
+                jeMap.put("5_" + item.getType() + "_201811", item.getNy201811());
+                jeMap.put("5_" + item.getType() + "_201812", item.getNy201812());
+                jeMap.put("5_" + item.getType() + "_201901", item.getNy201901());
+                jeMap.put("5_" + item.getType() + "_201902", item.getNy201902());
+                jeMap.put("5_" + item.getType() + "_201903", item.getNy201903());
+                jeMap.put("5_" + item.getType() + "_201904", item.getNy201904());
+                jeMap.put("5_" + item.getType() + "_201905", item.getNy201905());
+                jeMap.put("5_" + item.getType() + "_201906", item.getNy201906());
+                jeMap.put("5_" + item.getType() + "_201907", item.getNy201907());
+                jeMap.put("5_" + item.getType() + "_201908", item.getNy201908());
+                jeMap.put("5_" + item.getType() + "_201909", item.getNy201909());
+                jeMap.put("5_" + item.getType() + "_201910", item.getNy201910());
+                jeMap.put("5_" + item.getType() + "_201911", item.getNy201911());
+                jeMap.put("5_" + item.getType() + "_201912", item.getNy201912());
         }
-        return new JsonResult(data);
+
+        // 家庭稳定总收入 一 + 三 + 四 + 五
+        Map<String,Float> jtwdzsr = incomeSerivce.getJTWDZSR(fid);
+
+        // 家庭稳定纯收入 六 - 二
+
+
+        // 家庭稳定r人均纯收入 七 / 家庭人口数
+
+
+        result.put("jeMap", jeMap);
+        result.put("jtwdzsr", jtwdzsr);
+        return new JsonResult(result);
     }
 
     @RequestMapping(value = "/getIncome9")
@@ -137,15 +168,21 @@ public class IncomeRestController {
         List<YmIncome5> income9List = incomeSerivce.getIncome9(fid);
         for (YmIncome5 item:
                 income9List) {
-            data.put("6_" + item.getType1() + "_201810", item.getNy201810());
-            data.put("6_" + item.getType1() + "_201811", item.getNy201811());
-            data.put("6_" + item.getType1() + "_201812", item.getNy201812());
-            data.put("6_" + item.getType1() + "_201913", item.getNy201913());
-            data.put("6_" + item.getType1() + "_201946", item.getNy201946());
-            data.put("6_" + item.getType1() + "_201979", item.getNy201979());
-            data.put("6_" + item.getType1() + "_201910", item.getNy201910());
-            data.put("6_" + item.getType1() + "_201911", item.getNy201911());
-            data.put("6_" + item.getType1() + "_201912", item.getNy201912());
+            data.put("6_" + item.getType() + "_201810", item.getNy201810());
+            data.put("6_" + item.getType() + "_201811", item.getNy201811());
+            data.put("6_" + item.getType() + "_201812", item.getNy201812());
+            data.put("6_" + item.getType() + "_201901", item.getNy201901());
+            data.put("6_" + item.getType() + "_201902", item.getNy201902());
+            data.put("6_" + item.getType() + "_201903", item.getNy201903());
+            data.put("6_" + item.getType() + "_201904", item.getNy201904());
+            data.put("6_" + item.getType() + "_201905", item.getNy201905());
+            data.put("6_" + item.getType() + "_201906", item.getNy201906());
+            data.put("6_" + item.getType() + "_201907", item.getNy201907());
+            data.put("6_" + item.getType() + "_201908", item.getNy201908());
+            data.put("6_" + item.getType() + "_201909", item.getNy201909());
+            data.put("6_" + item.getType() + "_201910", item.getNy201910());
+            data.put("6_" + item.getType() + "_201911", item.getNy201911());
+            data.put("6_" + item.getType() + "_201912", item.getNy201912());
         }
         return new JsonResult(data);
     }

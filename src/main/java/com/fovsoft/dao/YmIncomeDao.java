@@ -34,9 +34,12 @@ public interface YmIncomeDao {
 
     @Insert({
             "<script>",
-            "insert into ym_income3(fid, type1,type2, xm, wggz , wgdz , wgqymc, wgljsj, ny201810, ny201811, ny201812,ny201913, ny201946,ny201979,ny201910,ny201911,ny201912) values ",
+            "insert into ym_income3(fid, type1,type2, xm, wggz , wgdz , wgqymc, wgljsj, ny201810, ny201811, ny201812,ny201901,ny201902,ny201903,ny201904,ny201905, ny201906,ny201907,ny201908,ny201909,ny201910,ny201911,ny201912) values ",
             "<foreach collection='param' item='item' index='index' separator=','>",
-            "(#{item.fid}, #{item.type1}, #{item.type2}, #{item.xm}, #{item.wggz}, #{item.wgdz}, #{item.wgqymc}, #{item.wgljsj}, #{item.ny201810}, #{item.ny201811}, #{item.ny201812}, #{item.ny201913}, #{item.ny201946}, #{item.ny201979}" +
+            "(#{item.fid}, #{item.type1}, #{item.type2}, #{item.xm}, #{item.wggz}, #{item.wgdz}, #{item.wgqymc}, #{item.wgljsj}, #{item.ny201810}, #{item.ny201811}, #{item.ny201812}" +
+                    ", #{item.ny201901}, #{item.ny201902}, #{item.ny201903}" +
+                    ", #{item.ny201904}, #{item.ny201905}, #{item.ny201907}" +
+                    ", #{item.ny201907}, #{item.ny201908}, #{item.ny201909}" +
                     ", #{item.ny201910}, #{item.ny201911}, #{item.ny201912})",
             "</foreach>",
             "</script>"
@@ -45,9 +48,13 @@ public interface YmIncomeDao {
 
     @Insert({
             "<script>",
-            "insert into ym_income5(fid, type, ny201810, ny201811, ny201812,ny201913, ny201946,ny201979,ny201910,ny201911,ny201912) values ",
+            "insert into ym_income5(fid, type, ny201810, ny201811, ny201812,ny201901,ny201902,ny201903,ny201904,ny201905, ny201906,ny201907,ny201908,ny201909,ny201910,ny201911,ny201912) values ",
             "<foreach collection='param' item='item' index='index' separator=','>",
-            "(#{item.fid}, #{item.type}, #{item.ny201810}, #{item.ny201811}, #{item.ny201812}, #{item.ny201913}, #{item.ny201946}, #{item.ny201979}, #{item.ny201910}, #{item.ny201911}, #{item.ny201912})",
+            "(#{item.fid}, #{item.type}, #{item.ny201810}, #{item.ny201811}, #{item.ny201812}" +
+                    ", #{item.ny201901}, #{item.ny201902}, #{item.ny201903}" +
+                    ", #{item.ny201904}, #{item.ny201905}, #{item.ny201907}" +
+                    ", #{item.ny201907}, #{item.ny201908}, #{item.ny201909}" +
+                    ", #{item.ny201910}, #{item.ny201911}, #{item.ny201912})",
             "</foreach>",
             "</script>"
     })
@@ -55,9 +62,12 @@ public interface YmIncomeDao {
 
     @Insert({
             "<script>",
-            "insert into ym_income9(fid, type, ny201810, ny201811, ny201812,ny201913, ny201946,ny201979,ny201910,ny201911,ny201912) values ",
+            "insert into ym_income9(fid, type, ny201810, ny201811, ny201812,ny201901,ny201902,ny201903,ny201904,ny201905, ny201906,ny201907,ny201908,ny201909,ny201910,ny201911,ny201912) values ",
             "<foreach collection='param' item='item' index='index' separator=','>",
-            "(#{item.fid}, #{item.type}, #{item.ny201810}, #{item.ny201811}, #{item.ny201812}, #{item.ny201913}, #{item.ny201946}, #{item.ny201979}" +
+            "(#{item.fid}, #{item.type}, #{item.ny201810}, #{item.ny201811}, #{item.ny201812} " +
+                    ", #{item.ny201901}, #{item.ny201902}, #{item.ny201903}" +
+                    ", #{item.ny201904}, #{item.ny201905}, #{item.ny201907}" +
+                    ", #{item.ny201907}, #{item.ny201908}, #{item.ny201909}" +
                     ", #{item.ny201910}, #{item.ny201911}, #{item.ny201912})",
             "</foreach>",
             "</script>"
@@ -105,12 +115,25 @@ public interface YmIncomeDao {
     @Select("SELECT type1,type2,nf,yf,pz,sl,je FROM ym_income1 where fid = #{fid}")
     List<YmIncome1> listIncome1(@Param(value = "fid") int fid);
 
-    @Select("SELECT type1,type2,xm,wggz,wgdz,wgqymc,wgljsj,ny201810,ny201811, ny201812, ny201913, ny201946, ny201979, ny201910, ny201911, ny201912 FROM ym_income3 where fid = #{fid}")
+    @Select("SELECT type1,type2,xm,wggz,wgdz,wgqymc,wgljsj,ny201810,ny201811, ny201812, ny201901,ny201902,ny201903,ny201904,ny201905, ny201906,ny201907,ny201908,ny201909,ny201910,ny201911,ny201912 FROM ym_income3 where fid = #{fid}")
     List<YmIncome3> listIncome3(@Param(value = "fid") int fid);
 
-    @Select("SELECT type,ny201810,ny201811, ny201812, ny201913, ny201946, ny201979, ny201910, ny201911, ny201912 FROM ym_income5 where fid = #{fid}")
+    @Select("SELECT type,ny201810,ny201811, ny201812, ny201901,ny201902,ny201903,ny201904,ny201905, ny201906,ny201907,ny201908,ny201909,ny201910,ny201911,ny201912 FROM ym_income5 where fid = #{fid}")
     List<YmIncome5> listIncome5(@Param(value = "fid") int fid);
 
-    @Select("SELECT type,ny201810,ny201811, ny201812, ny201913, ny201946, ny201979, ny201910, ny201911, ny201912 FROM ym_income9 where fid = #{fid}")
+    @Select("SELECT type,ny201810,ny201811, ny201812, ny201901,ny201902,ny201903,ny201904,ny201905, ny201906,ny201907,ny201908,ny201909,ny201910,ny201911,ny201912 FROM ym_income9 where fid = #{fid}")
     List<YmIncome5> listIncome9(@Param(value = "fid") int fid);
+
+    @Select("SELECT * FROM\n" +
+            "(SELECT SUM(je) AS jtwdzsr2018 FROM ym_income1 WHERE fid = #{fid} AND nf = '2018' AND type1 = 1) a\n" +
+            ",\n" +
+            "(SELECT SUM(je) AS jtwdzsr2019 FROM ym_income1 WHERE fid = #{fid} AND nf = '2019' AND type1 = 1) b\n" +
+            ",\n" +
+            "(SELECT SUM(je) AS jtwdzzc2018 FROM ym_income1 WHERE fid = #{fid} AND nf = '2018' AND type1 = 2) c\n" +
+            ",\n" +
+            "(SELECT SUM(je) AS jtwdzzc2019 FROM ym_income1 WHERE fid = #{fid} AND nf = '2019' AND type1 = 2) d\n" +
+            ",\n" +
+            "(SELECT COUNT(*) as num FROM ym_family_base_member WHERE fid = #{fid}) e"
+            )
+    Map<String,Float> getJTWDZSR(@Param(value = "fid") int fid);
 }

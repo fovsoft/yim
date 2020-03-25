@@ -1,9 +1,11 @@
 package com.fovsoft.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.security.core.session.SessionRegistry;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -16,9 +18,17 @@ public class LoginController {
 
     @Autowired
     private SessionRegistry sessionRegistry;
+    @Autowired
+    private Environment env;
+
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String login() {
+    public String login(ModelMap map) {
+        map.addAttribute("projectName", env.getProperty("project.name"));
+        map.addAttribute("projectGroup", env.getProperty("project.group"));
+        map.addAttribute("projectTitle1", env.getProperty("project.title1"));
+        map.addAttribute("projectTitle2", env.getProperty("project.title2"));
+
         return "login";
     }
 
@@ -35,7 +45,6 @@ public class LoginController {
     }
 
 
-
     @RequestMapping(value = "/")
     public ModelAndView index() {
         ModelAndView mv = new ModelAndView();
@@ -49,6 +58,7 @@ public class LoginController {
         model.addAttribute("name", "王圣基");
         return "hello";
     }
+
     @RequestMapping(value = "/hello2", method = RequestMethod.GET)
     public String hello2(Model model) {
         model.addAttribute("name", "王圣基");

@@ -6,6 +6,8 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContext;
@@ -22,7 +24,8 @@ import java.util.*;
 public class DemoController {
 //    private Logger logger = LoggerFactory.getLogger(DemoController.class);
     private final Log logger = LogFactory.getLog(this.getClass());
-
+    @Autowired
+    private Environment env;
     @RequestMapping("/test1")
     public JsonResult<Map> test1() {
         Map result = new HashMap();
@@ -65,6 +68,13 @@ public class DemoController {
 //        securityContext.setAuthentication();
     }
 
+    @RequestMapping("/test3")
+    public String test3() {
+        String str = env.getProperty("project.name");
+        System.out.println(str);
+        return str;
+    }
+
     @RequestMapping("/getMap")
     public JsonResult<Map> getMap() {
         Map result = new HashMap();
@@ -74,4 +84,7 @@ public class DemoController {
 
         return new JsonResult<>(result);
     }
+
+
+
 }

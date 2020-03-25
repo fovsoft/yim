@@ -11,19 +11,25 @@ public class YmIncome5 implements Serializable {
     private String ny201810;
     private String ny201811;
     private String ny201812;
-    private String ny201913;
-    private String ny201946;
-    private String ny201979;
+    private String ny201901;
+    private String ny201902;
+    private String ny201903;
+    private String ny201904;
+    private String ny201905;
+    private String ny201906;
+    private String ny201907;
+    private String ny201908;
+    private String ny201909;
     private String ny201910;
     private String ny201911;
     private String ny201912;
 
 
-    public int getType1() {
+    public int getType() {
         return type;
     }
 
-    public void setType1(int type) {
+    public void setType(int type) {
         this.type = type;
     }
 
@@ -51,28 +57,76 @@ public class YmIncome5 implements Serializable {
         this.ny201812 = ny201812;
     }
 
-    public String getNy201913() {
-        return ny201913;
+    public String getNy201901() {
+        return ny201901;
     }
 
-    public void setNy201913(String ny201913) {
-        this.ny201913 = ny201913;
+    public void setNy201901(String ny201901) {
+        this.ny201901 = ny201901;
     }
 
-    public String getNy201946() {
-        return ny201946;
+    public String getNy201902() {
+        return ny201902;
     }
 
-    public void setNy201946(String ny201946) {
-        this.ny201946 = ny201946;
+    public void setNy201902(String ny201902) {
+        this.ny201902 = ny201902;
     }
 
-    public String getNy201979() {
-        return ny201979;
+    public String getNy201903() {
+        return ny201903;
     }
 
-    public void setNy201979(String ny201979) {
-        this.ny201979 = ny201979;
+    public void setNy201903(String ny201903) {
+        this.ny201903 = ny201903;
+    }
+
+    public String getNy201904() {
+        return ny201904;
+    }
+
+    public void setNy201904(String ny201904) {
+        this.ny201904 = ny201904;
+    }
+
+    public String getNy201905() {
+        return ny201905;
+    }
+
+    public void setNy201905(String ny201905) {
+        this.ny201905 = ny201905;
+    }
+
+    public String getNy201906() {
+        return ny201906;
+    }
+
+    public void setNy201906(String ny201906) {
+        this.ny201906 = ny201906;
+    }
+
+    public String getNy201907() {
+        return ny201907;
+    }
+
+    public void setNy201907(String ny201907) {
+        this.ny201907 = ny201907;
+    }
+
+    public String getNy201908() {
+        return ny201908;
+    }
+
+    public void setNy201908(String ny201908) {
+        this.ny201908 = ny201908;
+    }
+
+    public String getNy201909() {
+        return ny201909;
+    }
+
+    public void setNy201909(String ny201909) {
+        this.ny201909 = ny201909;
     }
 
     public String getNy201910() {

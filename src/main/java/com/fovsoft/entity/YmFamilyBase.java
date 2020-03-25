@@ -14,7 +14,7 @@ import javax.persistence.Table;
 /**
  * table name:  ym_family_base
  * author name: ryo
- * create time: 2019-11-02 21:47:54
+ * create time: 2019-11-02 21:47:54FamilyService
  */
 @Entity
 @Table(name = "ym_family_base")

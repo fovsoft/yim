@@ -583,10 +583,22 @@ let family_add = (function () {
             var data = obj.data;
             if (obj.event === 'detail') {
                 layer.msg('ID：' + data.id + ' 的查看操作');
-            } else if (obj.event === 'del') {
+            }
+            else if (obj.event === 'del') {
                 layer.confirm('是否删除该记录？', function (index) {
-                    obj.del();
-                    layer.close(index);
+                    $.ajax({
+                        url: '/family/delMember',
+                        method: 'get',
+                        data: {id: obj.data.memberid},
+                        contentType: "application/json",
+                        success: function (data) {
+                            obj.del();
+                            layer.close(index);
+                        },
+                        error: function (data) {
+                            layer.msg("删除失败!");
+                        }
+                    });
                 });
             } else if (obj.event === 'edit') {
                 layer.open({
